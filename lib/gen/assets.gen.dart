@@ -12,15 +12,25 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/background_green.svg
+  String get backgroundGreen => 'assets/images/background_green.svg';
+
   /// File path: assets/images/honey.png
   AssetGenImage get honey => const AssetGenImage('assets/images/honey.png');
+
+  /// File path: assets/images/honey_pot.svg
+  String get honeyPot => 'assets/images/honey_pot.svg';
+
+  /// File path: assets/images/honey_pot2.svg
+  String get honeyPot2 => 'assets/images/honey_pot2.svg';
 
   /// File path: assets/images/honey_splash.jpg
   AssetGenImage get honeySplash =>
       const AssetGenImage('assets/images/honey_splash.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [honey, honeySplash];
+  List<dynamic> get values =>
+      [backgroundGreen, honey, honeyPot, honeyPot2, honeySplash];
 }
 
 class Assets {

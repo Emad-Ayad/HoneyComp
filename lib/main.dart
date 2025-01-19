@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:honey_comp/core/helper_functions/routes_generator.dart';
 import 'package:honey_comp/features/splash/presentation/view/splash_view.dart';
+
+import 'generated/l10n.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      locale: const Locale('ar'),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: routerGenerator,
       initialRoute: SplashView.roteName,

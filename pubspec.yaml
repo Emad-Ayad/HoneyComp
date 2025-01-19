@@ -37,6 +37,13 @@ dependencies:
   cupertino_icons: ^1.0.8
   build_runner: ^2.4.13
   flutter_gen_runner: ^5.8.0
+  flutter_svg: ^2.0.17
+  intl: ^0.19.0
+  flutter_localizations:
+    sdk: flutter
+  dots_indicator: ^3.0.0
+
+
 
 dev_dependencies:
   build_runner: ^2.4.13
@@ -98,6 +105,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
+flutter_intl:
+  enabled: true
 
 
