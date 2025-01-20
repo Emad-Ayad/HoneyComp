@@ -21,6 +21,14 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) =>
-      <String, Function>{"skip": MessageLookupByLibrary.simpleMessage("skip")};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "onboard1": MessageLookupByLibrary.simpleMessage(
+            "Discover a unique shopping experience with HoneyComp. Explore our wide range of premium natural honey and enjoy the best deals and high quality."),
+        "onboard2": MessageLookupByLibrary.simpleMessage(
+            "Discover the finest, handpicked honey varieties. Explore detailed descriptions, stunning images, and customer reviews to find the perfect honey that suits your taste."),
+        "skip": MessageLookupByLibrary.simpleMessage("skip"),
+        "startNow": MessageLookupByLibrary.simpleMessage("Start Now"),
+        "welcome": MessageLookupByLibrary.simpleMessage("Welcome in "),
+        "welcome2": MessageLookupByLibrary.simpleMessage("Explore and Shop")
+      };
 }

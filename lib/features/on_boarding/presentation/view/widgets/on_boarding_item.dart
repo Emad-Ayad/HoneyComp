@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:honey_comp/core/constants/app_text_styles.dart';
 import 'package:honey_comp/gen/assets.gen.dart';
 import 'package:honey_comp/generated/l10n.dart';
 
@@ -8,11 +9,12 @@ class OnBoardingItem extends StatelessWidget {
       {super.key,
       required this.image,
       required this.title,
-      required this.subTitle});
+      required this.subTitle, required this.isVisible});
 
   final String  image;
   final Widget title;
   final String subTitle;
+  final bool isVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,9 @@ class OnBoardingItem extends StatelessWidget {
               Positioned(
                 right: 25,
                 top: 30,
-                child: TextButton(onPressed: (){}, child:  Text(S.of(context).skip)),
+                child: Visibility(
+                  visible: isVisible,
+                    child: TextButton(onPressed: (){}, child:  Text(S.of(context).skip))),
               ),
               Positioned(
                 right: 0,
@@ -51,11 +55,7 @@ class OnBoardingItem extends StatelessWidget {
         title,
         Padding(
           padding: const EdgeInsets.all(14.0),
-          child: Text(subTitle,textAlign: TextAlign.center,style: const TextStyle(
-            fontFamily: 'Cairo',
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),),
+          child: Text(subTitle,textAlign: TextAlign.center,style:  AppTextStyles.bodyText1,),
         ),
       ],
     );

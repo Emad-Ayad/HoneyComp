@@ -59,6 +59,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Start Now`
+  String get startNow {
+    return Intl.message(
+      'Start Now',
+      name: 'startNow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome in `
+  String get welcome {
+    return Intl.message(
+      'Welcome in ',
+      name: 'welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discover a unique shopping experience with HoneyComp. Explore our wide range of premium natural honey and enjoy the best deals and high quality.`
+  String get onboard1 {
+    return Intl.message(
+      'Discover a unique shopping experience with HoneyComp. Explore our wide range of premium natural honey and enjoy the best deals and high quality.',
+      name: 'onboard1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Explore and Shop`
+  String get welcome2 {
+    return Intl.message(
+      'Explore and Shop',
+      name: 'welcome2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discover the finest, handpicked honey varieties. Explore detailed descriptions, stunning images, and customer reviews to find the perfect honey that suits your taste.`
+  String get onboard2 {
+    return Intl.message(
+      'Discover the finest, handpicked honey varieties. Explore detailed descriptions, stunning images, and customer reviews to find the perfect honey that suits your taste.',
+      name: 'onboard2',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

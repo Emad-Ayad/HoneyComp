@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
+import 'package:honey_comp/core/constants/app_text_styles.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({super.key, required this.onPressed, required this.title});
@@ -22,11 +23,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           title,
-          style: const TextStyle(
-              color: Colors.white,
-              fontFamily: 'Cairo',
-              fontSize: 16,
-              fontWeight: FontWeight.w700),
+          style: AppTextStyles.buttonText,
         ),
       ),
     );
