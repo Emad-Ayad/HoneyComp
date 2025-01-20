@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
+import 'package:honey_comp/core/constants/constants.dart';
+import 'package:honey_comp/core/services/shared_preferences_singleton.dart';
+import 'package:honey_comp/features/auth/presentaion/view/login_view.dart';
 import 'package:honey_comp/gen/assets.gen.dart';
 import 'package:honey_comp/generated/l10n.dart';
 
@@ -34,7 +37,10 @@ class OnBoardingItem extends StatelessWidget {
                 top: 30,
                 child: Visibility(
                   visible: isVisible,
-                    child: TextButton(onPressed: (){}, child:  Text(S.of(context).skip))),
+                    child: TextButton(onPressed: (){
+                      SharedPreferenceSingleton.setBool(kIsOnBoardingSeen, true);
+                      Navigator.pushReplacementNamed(context, LoginView.routeName);
+                    }, child:  Text(S.of(context).skip))),
               ),
               Positioned(
                 right: 0,

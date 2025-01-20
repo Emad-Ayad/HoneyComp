@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:honey_comp/core/constants/constants.dart';
+import 'package:honey_comp/core/services/shared_preferences_singleton.dart';
+import 'package:honey_comp/features/auth/presentaion/view/login_view.dart';
 import 'package:honey_comp/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:honey_comp/gen/assets.gen.dart';
 
@@ -37,8 +40,14 @@ class _SplashViewState extends State<SplashView> {
   }
 
   void executeRouting() {
+    bool isOnBoardingSeen =
+        SharedPreferenceSingleton.getBool(kIsOnBoardingSeen);
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, OnBoardingView.onBoardingRoute);
+      if (isOnBoardingSeen) {
+        Navigator.pushReplacementNamed(context, LoginView.routeName);
+      } else {
+        Navigator.pushReplacementNamed(context, OnBoardingView.onBoardingRoute);
+      }
     });
   }
 }

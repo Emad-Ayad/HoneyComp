@@ -1,7 +1,10 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
+import 'package:honey_comp/core/constants/constants.dart';
+import 'package:honey_comp/core/services/shared_preferences_singleton.dart';
 import 'package:honey_comp/core/widgets/custom_button.dart';
+import 'package:honey_comp/features/auth/presentaion/view/login_view.dart';
 import 'package:honey_comp/features/on_boarding/presentation/view/widgets/on_boarding_page_view.dart';
 import 'package:honey_comp/generated/l10n.dart';
 
@@ -59,7 +62,10 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
           maintainState: true,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: CustomButton(onPressed: () {}, title:S.of(context).startNow),
+            child: CustomButton(onPressed: () {
+              SharedPreferenceSingleton.setBool(kIsOnBoardingSeen, true);
+              Navigator.pushReplacementNamed(context, LoginView.routeName);
+            }, title:S.of(context).startNow),
           ),
         ),
         const SizedBox(height: 34),
