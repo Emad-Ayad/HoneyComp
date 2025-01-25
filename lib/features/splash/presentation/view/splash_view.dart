@@ -25,16 +25,21 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: SizedBox(
-                height: MediaQuery.sizeOf(context).height * 0.65,
-                width: MediaQuery.sizeOf(context).width * 0.65,
-                child: Assets.images.honeySplash.image()),
-          )
-        ],
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: MediaQuery.sizeOf(context).height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: SizedBox(
+                    height: MediaQuery.sizeOf(context).height * 0.65,
+                    width: MediaQuery.sizeOf(context).width * 0.65,
+                    child: Assets.images.honeySplash.image()),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

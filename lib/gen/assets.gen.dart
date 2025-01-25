@@ -12,8 +12,18 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/apple.png
+  AssetGenImage get apple => const AssetGenImage('assets/images/apple.png');
+
   /// File path: assets/images/background_green.svg
   String get backgroundGreen => 'assets/images/background_green.svg';
+
+  /// File path: assets/images/facebook.png
+  AssetGenImage get facebook =>
+      const AssetGenImage('assets/images/facebook.png');
+
+  /// File path: assets/images/google.png
+  AssetGenImage get google => const AssetGenImage('assets/images/google.png');
 
   /// File path: assets/images/honey.png
   AssetGenImage get honey => const AssetGenImage('assets/images/honey.png');
@@ -29,8 +39,16 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/honey_splash.jpg');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [backgroundGreen, honey, honeyPot, honeyPot2, honeySplash];
+  List<dynamic> get values => [
+        apple,
+        backgroundGreen,
+        facebook,
+        google,
+        honey,
+        honeyPot,
+        honeyPot2,
+        honeySplash
+      ];
 }
 
 class Assets {

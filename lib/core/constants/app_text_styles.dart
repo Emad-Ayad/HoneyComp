@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'app_colors.dart';
+
 
 abstract class AppTextStyles {
   // Heading styles
@@ -52,6 +54,12 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.normal,
     fontFamily: 'Cairo',
     color: Colors.black87,
+  );
+  static const TextStyle bodyTextShade = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    fontFamily: 'Cairo',
+    color: AppColors.lightPrimaryColor,
   );
 
   // Caption styles

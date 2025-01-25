@@ -4,5 +4,12 @@
   "welcome": "Welcome in ",
   "onboard1": "Discover a unique shopping experience with HoneyComp. Explore our wide range of premium natural honey and enjoy the best deals and high quality.",
   "welcome2": "Explore and Shop",
-  "onboard2": "Discover the finest, handpicked honey varieties. Explore detailed descriptions, stunning images, and customer reviews to find the perfect honey that suits your taste."
+  "onboard2": "Discover the finest, handpicked honey varieties. Explore detailed descriptions, stunning images, and customer reviews to find the perfect honey that suits your taste.",
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "forgotPassword": "Forgot password ?",
+  "dontHaveAccount": "Don't Have Account ?",
+  "makeAccount": "Make an Account "
+
 }

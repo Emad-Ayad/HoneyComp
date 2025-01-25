@@ -47,8 +47,8 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
         DotsIndicator(
           dotsCount: 2,
           decorator: DotsDecorator(
-            activeColor: AppColors.secondaryColor,
-            color: AppColors.secondaryColor
+            activeColor: AppColors.primaryColor,
+            color: AppColors.primaryColor
                 .withOpacity(currentPage == 0 ? 0.5 : 1),
           ),
         ),
