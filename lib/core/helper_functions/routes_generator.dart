@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:honey_comp/features/auth/presentaion/view/login_view.dart';
+import 'package:honey_comp/features/auth/presentaion/view/sign_up_view.dart';
 import 'package:honey_comp/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:honey_comp/features/splash/presentation/view/splash_view.dart';
 
@@ -12,6 +13,9 @@ Route<dynamic> routerGenerator(RouteSettings settings) {
 
     case LoginView.routeName:
       return MaterialPageRoute(builder: (context) => const LoginView());
+
+    case SignUpView.routeName:
+      return MaterialPageRoute(builder: (context) => const SignUpView());
 
       default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

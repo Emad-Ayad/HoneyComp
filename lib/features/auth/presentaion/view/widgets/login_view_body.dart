@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
 import 'package:honey_comp/core/widgets/build_app_bar.dart';
 import 'package:honey_comp/core/widgets/custom_button.dart';
 import 'package:honey_comp/core/widgets/custom_text_form_field.dart';
 import 'package:honey_comp/core/widgets/social_auth.dart';
+import 'package:honey_comp/features/auth/presentaion/view/sign_up_view.dart';
+import 'package:honey_comp/gen/assets.gen.dart';
 import 'package:honey_comp/generated/l10n.dart';
-
-import '../../../../../gen/assets.gen.dart';
 import 'or_divider.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -61,10 +60,15 @@ class LoginViewBody extends StatelessWidget {
                     style: AppTextStyles.bodyText1
                         .copyWith(color: const Color(0xff949D9E)),
                   ),
-                  Text(
-                    S.of(context).makeAccount,
-                    style: AppTextStyles.bodyText1
-                        .copyWith(color: const Color(0xff1B5E37)),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.of(context).pushNamed(SignUpView.routeName);
+                    },
+                    child: Text(
+                      S.of(context).makeAccount,
+                      style: AppTextStyles.bodyText1
+                          .copyWith(color: const Color(0xff1B5E37)),
+                    ),
                   ),
                 ],
               ),

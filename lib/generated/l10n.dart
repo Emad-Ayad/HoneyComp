@@ -150,10 +150,10 @@ class S {
     );
   }
 
-  /// `Don't Have Account ?`
+  /// `Don't Have Account ? `
   String get dontHaveAccount {
     return Intl.message(
-      'Don\'t Have Account ?',
+      'Don\'t Have Account ? ',
       name: 'dontHaveAccount',
       desc: '',
       args: [],
@@ -165,6 +165,56 @@ class S {
     return Intl.message(
       'Make an Account ',
       name: 'makeAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Name`
+  String get fullName {
+    return Intl.message(
+      'Full Name',
+      name: 'fullName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By creating an account, you agree to our terms and conditions.`
+  String get terms {
+    return Intl.message(
+      'By creating an account, you agree to our terms and conditions.',
+      name: 'terms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SignUp`
+  String get signUp {
+    return Intl.message(
+      'SignUp',
+      name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SignUp`
+  String get newAccount {
+    return Intl.message(
+      'SignUp',
+      name: 'newAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an Account? `
+  String get haveAccount {
+    return Intl.message(
+      'Already have an Account? ',
+      name: 'haveAccount',
       desc: '',
       args: [],
     );
