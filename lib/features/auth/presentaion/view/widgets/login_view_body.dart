@@ -75,7 +75,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                           autoValidateMode=AutovalidateMode.always;
                         });
                       }
-
                     },
                     title: S.of(context).login),
                 const SizedBox(height: 33),
@@ -105,7 +104,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 ),
                 const SizedBox(height: 33),
                 SocialAuth(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<SignInCubit>().signInWithGoogle();
+                  },
                   title: "تسجيل بواسطة جوجل",
                   icon: Assets.images.google.image(),
                 ),

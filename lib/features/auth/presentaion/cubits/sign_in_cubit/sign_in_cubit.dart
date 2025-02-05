@@ -11,12 +11,23 @@ class SignInCubit extends Cubit<SignInState> {
   final AuthRepo authRepo;
 
   Future<void> signInWithEmailAndPassword(
-      {required String email,
-      required String password}) async {
+      {required String email, required String password}) async {
     emit(SignInLoading());
 
-    final result =
-        await authRepo.signInWithEmailAndPassword(email, password);
+    final result = await authRepo.signInWithEmailAndPassword(email, password);
+
+    result.fold(
+      (failure) => emit(
+        SignInFailure(errMessage: failure.errMessage),
+      ),
+      (userEntity) => emit(
+        SignInSuccess(userEntity: userEntity),
+      ),
+    );
+  }
+
+  Future<void> signInWithGoogle() async {
+    final result = await authRepo.signInWithGoogle();
 
     result.fold(
       (failure) => emit(

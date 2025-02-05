@@ -24,13 +24,24 @@ class AuthRepoImplementation extends AuthRepo {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(String email, String password) async {
+  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(
+      String email, String password) async {
     try {
       var user = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, password: password);
       return Right(UserModel.fromFirebaseUser(user));
     } on CustomException catch (e) {
       return left(ServerFailure(errMessage: e.errMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await firebaseAuthService.signInWithGoogle();
+      return Right(UserModel.fromFirebaseUser(user));
+    } catch (e) {
+      return left(ServerFailure(errMessage: e.toString()));
     }
   }
 }
