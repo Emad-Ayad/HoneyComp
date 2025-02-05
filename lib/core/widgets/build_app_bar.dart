@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 AppBar buildAppBar(context, {required String title}) {
@@ -7,7 +9,11 @@ AppBar buildAppBar(context, {required String title}) {
     title: Text(title),
     leading: IconButton(
         onPressed: () {
-          Navigator.of(context).pop();
+          if (Navigator.of(context).canPop()) {
+            Navigator.of(context).pop();
+          } else {
+            log("No previous screen to go back to");
+          }
         },
         icon: const Icon(Icons.arrow_back_ios_new)),
   );

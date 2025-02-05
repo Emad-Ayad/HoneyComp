@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "929584401155",
+    "project_id": "honey-comp",
+    "storage_bucket": "honey-comp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929584401155:android:93456a2d7fef8c49f23736",
+        "android_client_info": {
+          "package_name": "com.example.honey_comp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFeh-0EX5iOhXj3fpVb2ryvIYVMdoeW7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

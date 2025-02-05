@@ -43,6 +43,13 @@ dependencies:
     sdk: flutter
   dots_indicator: ^3.0.0
   shared_preferences: ^2.3.5
+  firebase_core: ^3.10.1
+  dartz: ^0.10.1
+  firebase_auth: ^5.4.1
+  bloc: ^9.0.0
+  flutter_bloc: ^9.0.0
+  get_it: ^8.0.3
+  modal_progress_hud_nsn: ^0.5.1
 
 
 
