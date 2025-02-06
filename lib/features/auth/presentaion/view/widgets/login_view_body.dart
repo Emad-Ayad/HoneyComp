@@ -111,14 +111,16 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   icon: Assets.images.google.image(),
                 ),
                 const SizedBox(height: 16),
+                // SocialAuth(
+                //   onPressed: () {},
+                //   title: "تسجيل بواسطة أبل",
+                //   icon: Assets.images.apple.image(),
+                // ),
+                // const SizedBox(height: 16),
                 SocialAuth(
-                  onPressed: () {},
-                  title: "تسجيل بواسطة أبل",
-                  icon: Assets.images.apple.image(),
-                ),
-                const SizedBox(height: 16),
-                SocialAuth(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<SignInCubit>().signInWithFacebook();
+                  },
                   title: "تسجيل بواسطة فيسبوك",
                   icon: Assets.images.facebook.image(),
                 ),

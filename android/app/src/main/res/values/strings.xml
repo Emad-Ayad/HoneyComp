@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="facebook_app_id">462186500165091</string>
+    <string name="app_name">HoneyComp</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">1b5445b5069576d25646e3f221425eca
+</string>
+
+
+</resources>
