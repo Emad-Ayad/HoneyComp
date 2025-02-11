@@ -8,4 +8,6 @@ class UserModel extends UserEntity {
     return UserModel(
         name: user.displayName ?? "", email: user.email ?? "", id: user.uid);
   }
+
+
 }

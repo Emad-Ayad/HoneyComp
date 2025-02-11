@@ -7,7 +7,6 @@ class FirebaseAuthService {
   Future<User> createUserWithEmailAndPassword({
     required String email,
     required String password,
-    required String name,
   }) async {
     try {
       final credential =
@@ -15,8 +14,6 @@ class FirebaseAuthService {
         email: email,
         password: password,
       );
-
-      await credential.user?.updateDisplayName(name);
 
       return credential.user!;
     } on FirebaseAuthException catch (e) {
@@ -109,5 +106,9 @@ class FirebaseAuthService {
     return (await FirebaseAuth.instance
             .signInWithCredential(facebookAuthCredential))
         .user!;
+  }
+
+  Future deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
   }
 }
