@@ -27,12 +27,11 @@ class AuthRepoImplementation extends AuthRepo {
       await addUserData(userEntity: userEntity);
       return Right(userEntity);
     } on CustomException catch (e) {
-      if (user != null) {
-        await firebaseAuthService.deleteUser();
-      }
+      await deleteUser(user);
       return left(ServerFailure(errMessage: e.errMessage));
-    }catch(e){
-      return left(ServerFailure(errMessage: "There is Something wrong in creating email"));
+    } catch (e) {
+      return left(ServerFailure(
+          errMessage: "There is Something wrong in creating email"));
     }
   }
 
@@ -50,20 +49,28 @@ class AuthRepoImplementation extends AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    User? user;
     try {
-      var user = await firebaseAuthService.signInWithGoogle();
-      return Right(UserModel.fromFirebaseUser(user));
+      user = await firebaseAuthService.signInWithGoogle();
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addUserData(userEntity: userEntity);
+      return Right(userEntity);
     } catch (e) {
+      await deleteUser(user);
       return left(ServerFailure(errMessage: e.toString()));
     }
   }
 
   @override
   Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    User? user;
     try {
-      var user = await firebaseAuthService.signInWithFacebook();
-      return Right(UserModel.fromFirebaseUser(user));
+      user = await firebaseAuthService.signInWithFacebook();
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addUserData(userEntity: userEntity);
+      return Right(userEntity);
     } catch (e) {
+      await deleteUser(user);
       return left(ServerFailure(errMessage: e.toString()));
     }
   }
@@ -72,5 +79,11 @@ class AuthRepoImplementation extends AuthRepo {
   Future addUserData({required UserEntity userEntity}) async {
     await dataBaseService.addData(
         path: BackendEnpPoints.addUserDataEndPoint, data: userEntity.toMap());
+  }
+
+  Future<void> deleteUser(User? user) async {
+    if (user != null) {
+      await firebaseAuthService.deleteUser();
+    }
   }
 }
