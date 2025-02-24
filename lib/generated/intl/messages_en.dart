@@ -22,28 +22,32 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "dontHaveAccount":
-            MessageLookupByLibrary.simpleMessage("Don\'t Have Account ? "),
-        "email": MessageLookupByLibrary.simpleMessage("Email"),
-        "forgotPassword":
-            MessageLookupByLibrary.simpleMessage("Forgot password ?"),
-        "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
-        "haveAccount":
-            MessageLookupByLibrary.simpleMessage("Already have an Account? "),
-        "login": MessageLookupByLibrary.simpleMessage("Login"),
-        "makeAccount": MessageLookupByLibrary.simpleMessage("Make an Account "),
-        "newAccount": MessageLookupByLibrary.simpleMessage("SignUp"),
-        "onboard1": MessageLookupByLibrary.simpleMessage(
-            "Discover a unique shopping experience with HoneyComp. Explore our wide range of premium natural honey and enjoy the best deals and high quality."),
-        "onboard2": MessageLookupByLibrary.simpleMessage(
-            "Discover the finest, handpicked honey varieties. Explore detailed descriptions, stunning images, and customer reviews to find the perfect honey that suits your taste."),
-        "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "signUp": MessageLookupByLibrary.simpleMessage("SignUp"),
-        "skip": MessageLookupByLibrary.simpleMessage("skip"),
-        "startNow": MessageLookupByLibrary.simpleMessage("Start Now"),
-        "terms": MessageLookupByLibrary.simpleMessage(
-            "By creating an account, you agree to our terms and conditions."),
-        "welcome": MessageLookupByLibrary.simpleMessage("Welcome in "),
-        "welcome2": MessageLookupByLibrary.simpleMessage("Explore and Shop")
-      };
+    "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t Have Account ? ",
+    ),
+    "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot password ?"),
+    "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
+    "haveAccount": MessageLookupByLibrary.simpleMessage(
+      "Already have an Account? ",
+    ),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "makeAccount": MessageLookupByLibrary.simpleMessage("Make an Account "),
+    "newAccount": MessageLookupByLibrary.simpleMessage("SignUp"),
+    "onboard1": MessageLookupByLibrary.simpleMessage(
+      "Discover a unique shopping experience with HoneyComp. Explore our wide range of premium natural honey and enjoy the best deals and high quality.",
+    ),
+    "onboard2": MessageLookupByLibrary.simpleMessage(
+      "Discover the finest, handpicked honey varieties. Explore detailed descriptions, stunning images, and customer reviews to find the perfect honey that suits your taste.",
+    ),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "signUp": MessageLookupByLibrary.simpleMessage("SignUp"),
+    "skip": MessageLookupByLibrary.simpleMessage("skip"),
+    "startNow": MessageLookupByLibrary.simpleMessage("Start Now"),
+    "terms": MessageLookupByLibrary.simpleMessage(
+      "By creating an account, you agree to our terms and conditions.",
+    ),
+    "welcome": MessageLookupByLibrary.simpleMessage("Welcome in "),
+    "welcome2": MessageLookupByLibrary.simpleMessage("Explore and Shop"),
+  };
 }

@@ -18,6 +18,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/background_green.svg
   String get backgroundGreen => 'assets/images/background_green.svg';
 
+  /// File path: assets/images/ellipse.svg
+  String get ellipse => 'assets/images/ellipse.svg';
+
   /// File path: assets/images/facebook.png
   AssetGenImage get facebook =>
       const AssetGenImage('assets/images/facebook.png');
@@ -27,6 +30,17 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/honey.png
   AssetGenImage get honey => const AssetGenImage('assets/images/honey.png');
+
+  /// File path: assets/images/honey1.png
+  AssetGenImage get honey1 => const AssetGenImage('assets/images/honey1.png');
+
+  /// File path: assets/images/honeyCup.jpg
+  AssetGenImage get honeyCup =>
+      const AssetGenImage('assets/images/honeyCup.jpg');
+
+  /// File path: assets/images/honeyStick.jpeg
+  AssetGenImage get honeyStick =>
+      const AssetGenImage('assets/images/honeyStick.jpeg');
 
   /// File path: assets/images/honey_pot.svg
   String get honeyPot => 'assets/images/honey_pot.svg';
@@ -38,16 +52,28 @@ class $AssetsImagesGen {
   AssetGenImage get honeySplash =>
       const AssetGenImage('assets/images/honey_splash.jpg');
 
+  /// File path: assets/images/notification.svg
+  String get notification => 'assets/images/notification.svg';
+
+  /// File path: assets/images/profile.png
+  AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
+
   /// List of all assets
   List<dynamic> get values => [
         apple,
         backgroundGreen,
+        ellipse,
         facebook,
         google,
         honey,
+        honey1,
+        honeyCup,
+        honeyStick,
         honeyPot,
         honeyPot2,
-        honeySplash
+        honeySplash,
+        notification,
+        profile
       ];
 }
 

@@ -8,6 +8,7 @@ import 'package:honey_comp/core/widgets/password_field.dart';
 import 'package:honey_comp/core/widgets/social_auth.dart';
 import 'package:honey_comp/features/auth/presentaion/cubits/sign_in_cubit/sign_in_cubit.dart';
 import 'package:honey_comp/features/auth/presentaion/view/sign_up_view.dart';
+import 'package:honey_comp/features/home/presentation/view/home_view.dart';
 import 'package:honey_comp/gen/assets.gen.dart';
 import 'package:honey_comp/generated/l10n.dart';
 import 'or_divider.dart';
@@ -66,13 +67,15 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 const SizedBox(height: 33),
                 CustomButton(
                     onPressed: () {
-                      if(globalKey.currentState!.validate()){
+                      if (globalKey.currentState!.validate()) {
                         globalKey.currentState!.save();
                         context.read<SignInCubit>().signInWithEmailAndPassword(
                             email: email, password: password);
-                      }else{
+                        Navigator.pushReplacementNamed(
+                            context, HomeView.routeName);
+                      } else {
                         setState(() {
-                          autoValidateMode=AutovalidateMode.always;
+                          autoValidateMode = AutovalidateMode.always;
                         });
                       }
                     },
@@ -106,6 +109,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 SocialAuth(
                   onPressed: () {
                     context.read<SignInCubit>().signInWithGoogle();
+                    Navigator.pushReplacementNamed(
+                        context, HomeView.routeName);
                   },
                   title: "تسجيل بواسطة جوجل",
                   icon: Assets.images.google.image(),
