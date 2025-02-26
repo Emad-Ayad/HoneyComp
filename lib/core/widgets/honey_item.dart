@@ -42,7 +42,7 @@ class HoneyItem extends StatelessWidget {
                 child: Image.asset(
                   Assets.images.honey1.path,
                   width: double.infinity,
-                  height: 170,
+                  height: 150,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -65,7 +65,7 @@ class HoneyItem extends StatelessWidget {
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          "200 جنيه / الكيلو",
+                          "200 جنيه / \n الكيلو",
                           style: AppTextStyles.subtitle2.copyWith(
                             color: AppColors.secondaryColor,
                             fontSize: 16

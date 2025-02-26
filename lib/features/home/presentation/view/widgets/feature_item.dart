@@ -41,13 +41,13 @@ class FeatureItem extends StatelessWidget {
                   children: [
                     const SizedBox(height: 12),
                     Text(
-                      "عروض العيد",
+                      "عروض رمضان",
                       style:
                           AppTextStyles.bodyText1.copyWith(color: Colors.white),
                     ),
                     const Spacer(),
                     Text(
-                      "خصم 25%",
+                      "خصم 30%",
                       style:
                           AppTextStyles.heading3.copyWith(color: Colors.white),
                     ),

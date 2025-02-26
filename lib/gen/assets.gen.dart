@@ -52,6 +52,9 @@ class $AssetsImagesGen {
   AssetGenImage get honeySplash =>
       const AssetGenImage('assets/images/honey_splash.jpg');
 
+  /// Directory path: assets/images/icons
+  $AssetsImagesIconsGen get icons => const $AssetsImagesIconsGen();
+
   /// File path: assets/images/notification.svg
   String get notification => 'assets/images/notification.svg';
 
@@ -74,6 +77,47 @@ class $AssetsImagesGen {
         honeySplash,
         notification,
         profile
+      ];
+}
+
+class $AssetsImagesIconsGen {
+  const $AssetsImagesIconsGen();
+
+  /// File path: assets/images/icons/active_home.svg
+  String get activeHome => 'assets/images/icons/active_home.svg';
+
+  /// File path: assets/images/icons/active_products.svg
+  String get activeProducts => 'assets/images/icons/active_products.svg';
+
+  /// File path: assets/images/icons/active_shopping-cart.svg
+  String get activeShoppingCart =>
+      'assets/images/icons/active_shopping-cart.svg';
+
+  /// File path: assets/images/icons/active_user.svg
+  String get activeUser => 'assets/images/icons/active_user.svg';
+
+  /// File path: assets/images/icons/home.svg
+  String get home => 'assets/images/icons/home.svg';
+
+  /// File path: assets/images/icons/products.svg
+  String get products => 'assets/images/icons/products.svg';
+
+  /// File path: assets/images/icons/shopping-cart.svg
+  String get shoppingCart => 'assets/images/icons/shopping-cart.svg';
+
+  /// File path: assets/images/icons/user.svg
+  String get user => 'assets/images/icons/user.svg';
+
+  /// List of all assets
+  List<String> get values => [
+        activeHome,
+        activeProducts,
+        activeShoppingCart,
+        activeUser,
+        home,
+        products,
+        shoppingCart,
+        user
       ];
 }
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:honey_comp/core/widgets/honey_item.dart';
 import 'package:honey_comp/features/home/presentation/view/widgets/best_selling_grid_view.dart';
 import 'package:honey_comp/features/home/presentation/view/widgets/custom_home_app_bar.dart';
-import 'package:honey_comp/features/home/presentation/view/widgets/feature_item.dart';
 
 import 'best_selling_header.dart';
 import 'custom_search_field.dart';
