@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
+import 'package:honey_comp/features/best_selling/presentation/view/best_selling_view.dart';
 
 class BestSellingHeader extends StatelessWidget {
   const BestSellingHeader({super.key});
@@ -16,9 +17,13 @@ class BestSellingHeader extends StatelessWidget {
             style:
                 AppTextStyles.subtitle1.copyWith(fontWeight: FontWeight.bold),
           ),
-          const Text(
-            "المزيد",
-            style: AppTextStyles.bodyText1,
+          GestureDetector(
+            onTap: () =>
+                Navigator.pushNamed(context, BestSellingView.routeName),
+            child: const Text(
+              "المزيد",
+              style: AppTextStyles.bodyText1,
+            ),
           ),
         ],
       ),
