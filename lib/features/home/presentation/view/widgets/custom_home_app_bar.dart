@@ -1,6 +1,7 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
+import 'package:honey_comp/core/helper_functions/get_user_data.dart';
 import 'package:honey_comp/core/widgets/notification_widget.dart';
 import 'package:honey_comp/gen/assets.gen.dart';
 
@@ -14,7 +15,7 @@ class CustomHomeAppBar extends StatelessWidget {
       child: ListTile(
         leading: Assets.images.profile.image(),
         title: Text(
-          "عماد عياد",
+          getUser().name,
           style: AppTextStyles.subtitle1.copyWith(fontWeight: FontWeight.bold),
         ),
         subtitle: const Text(

@@ -1,10 +1,14 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:honey_comp/core/constants/constants.dart';
 import 'package:honey_comp/core/errors/custom_exception.dart';
 import 'package:honey_comp/core/errors/failure.dart';
 import 'package:honey_comp/core/helper_functions/backend_endpoints.dart';
 import 'package:honey_comp/core/services/database_service.dart';
 import 'package:honey_comp/core/services/firebase_auth_service.dart';
+import 'package:honey_comp/core/services/shared_preferences_singleton.dart';
 import 'package:honey_comp/features/auth/data/model/user_model.dart';
 import 'package:honey_comp/features/auth/domain/entities/user_entity.dart';
 import 'package:honey_comp/features/auth/domain/repos/auth_repo.dart';
@@ -42,6 +46,7 @@ class AuthRepoImplementation extends AuthRepo {
       var user = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, password: password);
       var userEntity = await getUserData(uid: user.uid);
+      await saveUserData(userEntity: userEntity);
       return Right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(errMessage: e.errMessage));
@@ -54,6 +59,7 @@ class AuthRepoImplementation extends AuthRepo {
     try {
       user = await firebaseAuthService.signInWithGoogle();
       var userEntity = UserModel.fromFirebaseUser(user);
+      await saveUserData(userEntity: userEntity);
 
       var isUserExist = await dataBaseService.isUserExist(
           path: BackendEnpPoints.addUserDataEndPoint, documentId: user.uid);
@@ -76,6 +82,7 @@ class AuthRepoImplementation extends AuthRepo {
     try {
       user = await firebaseAuthService.signInWithFacebook();
       var userEntity = UserModel.fromFirebaseUser(user);
+      await saveUserData(userEntity: userEntity);
       var isUserExist = await dataBaseService.isUserExist(
           path: BackendEnpPoints.addUserDataEndPoint, documentId: user.uid);
       if (isUserExist) {
@@ -94,7 +101,7 @@ class AuthRepoImplementation extends AuthRepo {
   Future addUserData({required UserEntity userEntity}) async {
     await dataBaseService.addData(
         path: BackendEnpPoints.addUserDataEndPoint,
-        data: userEntity.toMap(),
+        data: UserModel.fromEntity(userEntity).toMap(),
         docId: userEntity.id);
   }
 
@@ -109,5 +116,11 @@ class AuthRepoImplementation extends AuthRepo {
     var userData = await dataBaseService.getData(
         path: BackendEnpPoints.getUserDataEndPoint, documentId: uid);
     return UserModel.fromJson(userData);
+  }
+
+  @override
+  Future saveUserData({required UserEntity userEntity}) async {
+    var jsonData = jsonEncode(UserModel.fromEntity(userEntity).toMap());
+    await SharedPreferenceSingleton.setString(kIUserData, jsonData);
   }
 }

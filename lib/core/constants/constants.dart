@@ -1,2 +1,2 @@
-
- const kIsOnBoardingSeen ='isOnBoardingSeen';
+const kIsOnBoardingSeen = 'isOnBoardingSeen';
+const kIUserData = 'userData';
