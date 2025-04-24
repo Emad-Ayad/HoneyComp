@@ -1,3 +1,5 @@
+import 'package:honey_comp/features/home/domain/entities/product_entity.dart';
+
 import '../../domain/entities/review_entity.dart';
 
 class ReviewModel {
@@ -32,6 +34,16 @@ class ReviewModel {
       date: json['date'],
       ratting: json['ratting'],
       review: json['review'],
+    );
+  }
+
+  ReviewEntity toEntity() {
+    return ReviewEntity(
+      name: name,
+      image: image,
+      date: date,
+      ratting: ratting,
+      review: review,
     );
   }
 
