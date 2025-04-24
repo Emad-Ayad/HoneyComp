@@ -54,6 +54,7 @@ dependencies:
   flutter_facebook_auth: ^6.0.4
   cloud_firestore: ^5.6.3
   flutter_svg_provider: ^1.0.7
+  skeletonizer: ^1.4.3
 
 
 

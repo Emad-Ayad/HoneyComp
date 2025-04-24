@@ -5,6 +5,7 @@ import 'package:honey_comp/features/home/presentation/cubits/products_cubit.dart
 import 'package:honey_comp/features/home/presentation/view/widgets/best_selling_grid_view.dart';
 import 'package:honey_comp/features/home/presentation/view/widgets/custom_home_app_bar.dart';
 
+import 'best_selling_grid_view_bloc_builder.dart';
 import 'best_selling_header.dart';
 import 'custom_search_field.dart';
 import 'features_list.dart';
@@ -41,9 +42,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               ],
             ),
           ),
-          BestSellingGridView(),
+          BestSellingGridViewBlocBuilder(),
         ],
       ),
     );
   }
 }
+
+
