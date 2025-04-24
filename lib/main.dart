@@ -6,6 +6,7 @@ import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/helper_functions/routes_generator.dart';
 import 'package:honey_comp/core/services/bloc_observer_service.dart';
 import 'package:honey_comp/core/services/shared_preferences_singleton.dart';
+import 'package:honey_comp/features/home/presentation/view/main_view.dart';
 import 'package:honey_comp/features/splash/presentation/view/splash_view.dart';
 
 import 'core/services/get_it_service.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       locale: const Locale('ar'),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: routerGenerator,
-      initialRoute: SplashView.roteName,
+      initialRoute: MainView.routeName,
     );
   }
 }

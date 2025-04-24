@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:honey_comp/features/auth/presentaion/view/login_view.dart';
 import 'package:honey_comp/features/auth/presentaion/view/sign_up_view.dart';
 import 'package:honey_comp/features/best_selling/presentation/view/best_selling_view.dart';
-import 'package:honey_comp/features/home/presentation/view/home_view.dart';
+import 'package:honey_comp/features/home/presentation/view/main_view.dart';
 import 'package:honey_comp/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:honey_comp/features/splash/presentation/view/splash_view.dart';
 
@@ -19,8 +19,8 @@ Route<dynamic> routerGenerator(RouteSettings settings) {
     case SignUpView.routeName:
       return MaterialPageRoute(builder: (context) => const SignUpView());
 
-    case HomeView.routeName:
-      return MaterialPageRoute(builder: (context) => const HomeView());
+    case MainView.routeName:
+      return MaterialPageRoute(builder: (context) => const MainView());
 
     case BestSellingView.routeName:
       return MaterialPageRoute(builder: (context) => const BestSellingView());

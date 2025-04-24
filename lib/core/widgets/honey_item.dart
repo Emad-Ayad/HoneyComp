@@ -29,7 +29,7 @@ class HoneyItem extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(
                 Icons.favorite_border_outlined,
-                color: Colors.red,
+                color: Colors.black,
               ),
             ),
           ),

@@ -24,7 +24,8 @@ class ProductsRepoImpl implements ProductsRepo {
           data.map((e) => ProductModel.formJson(e).toEntity()).toList();
       return right(products);
     } catch (e) {
-      return left(ServerFailure(errMessage: "Error while getting data"));
+      return left(
+          ServerFailure(errMessage: "Error while getting BestSeller data"));
     }
   }
 
@@ -37,7 +38,8 @@ class ProductsRepoImpl implements ProductsRepo {
           data.map((e) => ProductModel.formJson(e).toEntity()).toList();
       return right(products);
     } catch (e) {
-      return left(ServerFailure(errMessage: "Error while getting data"));
+      return left(
+          ServerFailure(errMessage: "Error while getting Products data"));
     }
   }
 }
