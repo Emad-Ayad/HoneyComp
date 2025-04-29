@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
 
-abstract class AppColors{
-  static const Color primaryColor = Color(0xff1B5E37);
-  static const Color lightPrimaryColor = Color(0xff2D9F5D);
-  static const Color secondaryColor = Color(0xfff4a91f);
+abstract class AppColors {
+  /// Deep honey gold – primary branding color
+  static const Color primaryColor = Color(0xFFF4A91F);
+
+  /// Light honey – highlights, backgrounds
+  static const Color lightPrimaryColor = Color(0xFFFFD87C);
+
+  /// Rich amber – accent color for CTAs
+  static const Color secondaryColor = Color(0xFFFFC107);
+
+  /// Warm brown – headings or buttons
+  static const Color darkBrown = Color(0xFF5D4037);
+
+  /// Off-white – background
+  static const Color background = Color(0xFFFFF8E1);
+
+  /// Soft gray – borders or muted text
+  static const Color lightGray = Color(0xFFBDBDBD);
 }

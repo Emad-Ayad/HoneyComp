@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/features/home/presentation/view/widgets/custom_home_navigation_bar.dart';
 import 'package:honey_comp/features/home/presentation/view/widgets/home_view.dart';
 
@@ -9,8 +10,8 @@ class MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
+    return  const Scaffold(
+      backgroundColor: AppColors.background,
       bottomNavigationBar: CustomHomeNavigationBar(),
       body: SafeArea(
         child: HomeView(),

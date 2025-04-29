@@ -10,57 +10,70 @@ class FeatureItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.sizeOf(context).width;
+    final size = MediaQuery.sizeOf(context);
+    final width = size.width;
+    final height = size.height;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
         width: width * 0.85,
-        height: MediaQuery.sizeOf(context).height * 0.2,
+        height: height * 0.2,
         child: Stack(
           children: [
             Positioned(
               right: width * 0.4,
               child: Image.asset(
                 Assets.images.honeyStick.path,
-                height: MediaQuery.sizeOf(context).height * 0.2,
+                height: height * 0.2,
               ),
             ),
-            Container(
-              width: width * 0.46,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                    bottomRight: Radius.circular(4),
-                    topRight: Radius.circular(4)),
-                image: DecorationImage(
-                    image: svg.Svg(Assets.images.ellipse), fit: BoxFit.fill),
+
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(12),
+                bottomRight: Radius.circular(12),
               ),
-              child: Padding(
-                padding: const EdgeInsets.only(right: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 12),
-                    Text(
-                      "عروض رمضان",
-                      style:
-                          AppTextStyles.bodyText1.copyWith(color: Colors.white),
-                    ),
-                    const Spacer(),
-                    Text(
-                      "خصم 30%",
-                      style:
-                          AppTextStyles.heading3.copyWith(color: Colors.white),
-                    ),
-                    const SizedBox(height: 8),
-                    CustomFeaturesButton(
-                      onPressed: () {},
-                      title: "تسوق الان",
-                    ),
-                    const SizedBox(height: 20)
-                  ],
+              child: Container(
+                width: width * 0.46,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: svg.Svg(Assets.images.ellipse),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 12.0,
+                    horizontal: 16.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "عروض رمضان",
+                        style: AppTextStyles.bodyText1.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        "خصم 30%",
+                        style: AppTextStyles.heading3.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      CustomFeaturesButton(
+                        onPressed: () {},
+                        title: "تسوق الان",
+                      ),
+                      const SizedBox(height: 8),
+                    ],
+                  ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
