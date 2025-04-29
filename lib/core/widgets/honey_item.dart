@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
-import 'package:honey_comp/gen/assets.gen.dart';
+import 'package:honey_comp/features/home/domain/entities/product_entity.dart';
 
 class HoneyItem extends StatelessWidget {
-  const HoneyItem({super.key});
+  const HoneyItem({super.key, required this.productEntity});
+
+  final ProductEntity productEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -22,34 +24,22 @@ class HoneyItem extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Positioned(
-            top: 4,
-            right: 4,
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.favorite_border_outlined,
-                color: Colors.black,
-              ),
-            ),
-          ),
-
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-                child: Image.asset(
-                  Assets.images.honey1.path,
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(12)),
+                child: Image.network(
+                  productEntity.imageUrl!,
                   width: double.infinity,
                   height: 150,
                   fit: BoxFit.contain,
                 ),
               ),
-
-              // Product Details
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -57,7 +47,7 @@ class HoneyItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "سدر جبلي",
+                          productEntity.name,
                           style: AppTextStyles.bodyText1.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -65,11 +55,9 @@ class HoneyItem extends StatelessWidget {
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          "200 جنيه / \n الكيلو",
+                          "${productEntity.price} جنيه / \n الكيلو",
                           style: AppTextStyles.subtitle2.copyWith(
-                            color: AppColors.secondaryColor,
-                            fontSize: 16
-                          ),
+                              color: AppColors.secondaryColor, fontSize: 16),
                           textAlign: TextAlign.start,
                         ),
                       ],
@@ -88,6 +76,17 @@ class HoneyItem extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          Positioned(
+            top: 4,
+            right: 4,
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.favorite_border_outlined,
+                color: Colors.black,
+              ),
+            ),
           ),
         ],
       ),

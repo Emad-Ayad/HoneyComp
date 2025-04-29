@@ -8,12 +8,12 @@ ProductEntity dummyProduct = ProductEntity(
   description: 'Fresh organic Honey from local farm',
   isFeatured: true,
   price: 4.99,
-  image: File(''),
   expirationMonths: 6,
   numOfCalories: 95,
   unitAmount: 1,
   reviews: [],
   isOrganic: true,
+  avgRate: 3,
 );
 
 List<ProductEntity> getDummyProducts() {

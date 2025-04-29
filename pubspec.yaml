@@ -55,6 +55,7 @@ dependencies:
   cloud_firestore: ^5.6.3
   flutter_svg_provider: ^1.0.7
   skeletonizer: ^1.4.3
+  cached_network_image: ^3.4.1
 
 
 

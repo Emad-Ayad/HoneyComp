@@ -16,9 +16,11 @@ class BestSellingGridView extends StatelessWidget {
         mainAxisSpacing: 12,
         crossAxisSpacing: 16,
       ),
-      itemCount: 10,
+      itemCount: products.length,
       itemBuilder: (context, index) {
-        return const HoneyItem();
+        return HoneyItem(
+          productEntity: products[index],
+        );
       },
     );
   }
