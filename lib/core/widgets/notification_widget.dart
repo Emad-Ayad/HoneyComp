@@ -15,7 +15,7 @@ class NotificationWidget extends StatelessWidget {
         height: 40,
         decoration: const ShapeDecoration(
           shape: OvalBorder(),
-          color: Color(0XFFEEF8ED),
+          color: Color(0xFFFFF0B5),
         ),
         child: Padding(
           padding: const EdgeInsets.all(6.0),

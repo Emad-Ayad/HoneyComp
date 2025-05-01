@@ -96,6 +96,10 @@ class $AssetsImagesIconsGen {
   /// File path: assets/images/icons/active_user.svg
   String get activeUser => 'assets/images/icons/active_user.svg';
 
+  /// File path: assets/images/icons/arrow-swap-horizontal.svg
+  String get arrowSwapHorizontal =>
+      'assets/images/icons/arrow-swap-horizontal.svg';
+
   /// File path: assets/images/icons/home.svg
   String get home => 'assets/images/icons/home.svg';
 
@@ -114,6 +118,7 @@ class $AssetsImagesIconsGen {
         activeProducts,
         activeShoppingCart,
         activeUser,
+        arrowSwapHorizontal,
         home,
         products,
         shoppingCart,

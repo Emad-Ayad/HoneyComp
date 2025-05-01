@@ -4,7 +4,10 @@ import 'package:honey_comp/features/home/domain/entities/navigation_bar_entity.d
 import 'navigation_bar_item.dart';
 
 class CustomHomeNavigationBar extends StatefulWidget {
-  const CustomHomeNavigationBar({super.key});
+  final int currentIndex;
+  final Function(int) onTap;
+
+  const CustomHomeNavigationBar({super.key, required this.currentIndex, required this.onTap});
 
   @override
   State<CustomHomeNavigationBar> createState() =>
@@ -12,7 +15,6 @@ class CustomHomeNavigationBar extends StatefulWidget {
 }
 
 class _CustomHomeNavigationBarState extends State<CustomHomeNavigationBar> {
-  int activeIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +43,15 @@ class _CustomHomeNavigationBarState extends State<CustomHomeNavigationBar> {
             var index = e.key;
             var entity = e.value;
             return Expanded(
-              flex: index == activeIndex ? 3 :2,
+              flex: index == widget.currentIndex ? 3 :2,
               child: GestureDetector(
                 onTap: () {
                   setState(() {
-                    activeIndex = index;
+                    widget.onTap(index);
                   });
                 },
                 child: NavigationBarItem(
-                  isActive: activeIndex == index,
+                  isActive: widget.currentIndex == index,
                   navigationBarEntity: entity,
                 ),
               ),

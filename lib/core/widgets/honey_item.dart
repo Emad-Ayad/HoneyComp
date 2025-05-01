@@ -28,8 +28,7 @@ class HoneyItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(12)),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
                 child: Image.network(
                   productEntity.imageUrl!,
                   width: double.infinity,
@@ -37,9 +36,9 @@ class HoneyItem extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
               ),
+
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -57,7 +56,9 @@ class HoneyItem extends StatelessWidget {
                         Text(
                           "${productEntity.price} جنيه / \n الكيلو",
                           style: AppTextStyles.subtitle2.copyWith(
-                              color: AppColors.secondaryColor, fontSize: 16),
+                            color: AppColors.secondaryColor,
+                            fontSize: 16
+                          ),
                           textAlign: TextAlign.start,
                         ),
                       ],
