@@ -4,10 +4,10 @@ import 'package:honey_comp/core/helper_functions/dummy_product.dart';
 import 'package:honey_comp/features/home/presentation/cubits/products_cubit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import 'best_selling_grid_view.dart';
+import 'products_grid_view.dart';
 
-class BestSellingGridViewBlocBuilder extends StatelessWidget {
-  const BestSellingGridViewBlocBuilder({
+class ProductsGridViewBlocBuilder extends StatelessWidget {
+  const ProductsGridViewBlocBuilder({
     super.key,
   });
 
@@ -16,13 +16,13 @@ class BestSellingGridViewBlocBuilder extends StatelessWidget {
     return BlocBuilder<ProductsCubit, ProductsState>(
       builder: (context, state) {
         if (state is ProductsSuccess) {
-          return BestSellingGridView(products: state.products);
+          return ProductsGridView(products: state.products);
         } else if (state is ProductsFailure) {
           return SliverToBoxAdapter(child: Center(child: Text(state.errMessage)));
         } else {
           return Skeletonizer.sliver(
             enabled: true,
-            child: BestSellingGridView(
+            child: ProductsGridView(
               products: getDummyProducts(),
             ),
           );

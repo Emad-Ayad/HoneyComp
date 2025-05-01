@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:honey_comp/core/widgets/honey_item.dart';
 import 'package:honey_comp/features/home/domain/entities/product_entity.dart';
 
-class BestSellingGridView extends StatelessWidget {
-  const BestSellingGridView({super.key, required this.products});
+class ProductsGridView extends StatelessWidget {
+  const ProductsGridView({super.key, required this.products});
 
   final List<ProductEntity> products;
 

@@ -4,7 +4,7 @@ import 'package:honey_comp/core/widgets/build_app_bar.dart';
 import 'package:honey_comp/features/home/presentation/cubits/products_cubit.dart';
 import 'package:honey_comp/features/home/presentation/view/widgets/products_view_header.dart';
 
-import 'best_selling_grid_view_bloc_builder.dart';
+import 'products_grid_view_bloc_builder.dart';
 import 'custom_search_field.dart';
 
 class ProductsViewBody extends StatefulWidget {
@@ -35,18 +35,17 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
                     backButtonVisibility: false,
                     notificationVisibility: true),
                 CustomSearchField(),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 ProductsViewHeader(
                     productsLength:
                         context.read<ProductsCubit>().productsLength),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
               ],
             ),
           ),
-          BestSellingGridViewBlocBuilder(),
+          ProductsGridViewBlocBuilder(),
         ],
       ),
     );
-    ;
   }
 }
