@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
+import 'package:honey_comp/features/home/presentation/view/widgets/cart_view.dart';
 import 'package:honey_comp/features/home/presentation/view/widgets/custom_home_navigation_bar.dart';
 import 'package:honey_comp/features/home/presentation/view/widgets/home_view.dart';
 import 'package:honey_comp/features/home/presentation/view/widgets/products_view.dart';
@@ -36,6 +37,7 @@ class _MainViewState extends State<MainView> {
           children: const [
             HomeView(),
             ProductsView(),
+            CartView(),
           ],
         ),
       ),
