@@ -27,7 +27,7 @@ class CartViewBody extends StatelessWidget {
               ],
             ),
           ),
-          const CartItemList(),
+          const CartItemList(cartList: []),
           SliverFillRemaining(
             hasScrollBody: false,
             child: Padding(
