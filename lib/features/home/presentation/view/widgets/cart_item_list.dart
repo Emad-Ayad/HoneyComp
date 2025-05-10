@@ -13,7 +13,7 @@ class CartItemList extends StatelessWidget {
       separatorBuilder: (context, index) => const Divider(
         color: AppColors.lightGray,
       ),
-      itemCount: 10,
+      itemCount: cartList.length,
       itemBuilder: (context, index) {
         return CartItem(cartItemEntity: cartList[index]);
       },

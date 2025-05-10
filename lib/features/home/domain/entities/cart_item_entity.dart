@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:honey_comp/features/home/domain/entities/product_entity.dart';
 
-class CartItemEntity {
+class CartItemEntity extends Equatable {
   final ProductEntity productEntity;
   int count;
 
@@ -14,12 +15,17 @@ class CartItemEntity {
     return productEntity.unitAmount * count;
   }
 
-  increaseCount(){
+  increaseCount() {
     count++;
   }
 
-  decreaseCount(){
-    count--;
+  decreaseCount() {
+    if(count>1){
+      count--;
+    }
   }
 
+  @override
+  // TODO: implement props
+  List<Object?> get props => [productEntity];
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
 import 'package:honey_comp/features/home/domain/entities/product_entity.dart';
+import 'package:honey_comp/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 
 class HoneyItem extends StatelessWidget {
   const HoneyItem({super.key, required this.productEntity});
@@ -28,7 +30,8 @@ class HoneyItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(12)),
                 child: Image.network(
                   productEntity.imageUrl!,
                   width: double.infinity,
@@ -36,9 +39,9 @@ class HoneyItem extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
               ),
-
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -56,9 +59,7 @@ class HoneyItem extends StatelessWidget {
                         Text(
                           "${productEntity.price} جنيه / \n الكيلو",
                           style: AppTextStyles.subtitle2.copyWith(
-                            color: AppColors.secondaryColor,
-                            fontSize: 16
-                          ),
+                              color: AppColors.secondaryColor, fontSize: 16),
                           textAlign: TextAlign.start,
                         ),
                       ],
@@ -66,7 +67,9 @@ class HoneyItem extends StatelessWidget {
                     CircleAvatar(
                       backgroundColor: AppColors.primaryColor,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.read<CartCubit>().addToCart(productEntity);
+                        },
                         icon: const Icon(
                           Icons.add,
                           color: Colors.white,

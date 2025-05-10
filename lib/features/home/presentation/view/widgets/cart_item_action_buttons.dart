@@ -1,30 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
+import 'package:honey_comp/features/home/domain/entities/cart_item_entity.dart';
+import 'package:honey_comp/features/home/presentation/cubits/cart_item_cubit/cart_item_cubit.dart';
 
 class CartItemActionButtons extends StatelessWidget {
-  const CartItemActionButtons({super.key});
+  const CartItemActionButtons({super.key, required this.cartItemEntity});
+
+  final CartItemEntity cartItemEntity;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         CartItemActionButton(
-            icon: Icons.add,
-            iconColor: Colors.white,
-            color: AppColors.primaryColor,
-            onPressed: () {}),
+          icon: Icons.add,
+          iconColor: Colors.white,
+          color: AppColors.primaryColor,
+          onPressed: () {
+            cartItemEntity.increaseCount();
+            context.read<CartItemCubit>().updateCartItem(cartItemEntity);
+          },
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Text("3",
-              style: AppTextStyles.bodyText2
-                  .copyWith(fontWeight: FontWeight.bold)),
+          child: Text(
+            cartItemEntity.count.toString(),
+            style:
+                AppTextStyles.bodyText2.copyWith(fontWeight: FontWeight.bold),
+          ),
         ),
         CartItemActionButton(
-            icon: Icons.remove,
-            iconColor: Colors.black54,
-            color: Colors.white70,
-            onPressed: () {}),
+          icon: Icons.remove,
+          iconColor: Colors.black54,
+          color: Colors.white70,
+          onPressed: () {
+            cartItemEntity.decreaseCount();
+            context.read<CartItemCubit>().updateCartItem(cartItemEntity);
+          },
+        ),
       ],
     );
   }

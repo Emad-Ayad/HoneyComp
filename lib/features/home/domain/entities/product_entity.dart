@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:honey_comp/features/home/domain/entities/review_entity.dart';
 
-class ProductEntity {
+class ProductEntity extends Equatable{
   final String name, code, description;
   final num price;
   final bool isFeatured;
@@ -28,4 +29,8 @@ class ProductEntity {
       required this.reviews,
       this.isOrganic = false,
       this.imageUrl});
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [code];
 }

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/widgets/custom_button.dart';
+import 'package:honey_comp/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:honey_comp/features/home/presentation/cubits/cart_item_cubit/cart_item_cubit.dart';
 
 import '../../../../../core/widgets/build_app_bar.dart';
 import 'cart_item_list.dart';
 import 'cart_view_header.dart';
+import 'custom_cart_button.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
@@ -18,27 +22,19 @@ class CartViewBody extends StatelessWidget {
             child: Column(
               children: [
                 buildAppBar(context,
-                    title: "السلة",
-                  backButtonVisibility: false
-                   ),
+                    title: "السلة", backButtonVisibility: false),
                 const SizedBox(height: 8),
                 const CartViewHeader(),
                 const SizedBox(height: 8),
               ],
             ),
           ),
-          const CartItemList(cartList: []),
-          SliverFillRemaining(
+          CartItemList(
+            cartList: context.watch<CartCubit>().cartEntity.cartList,
+          ),
+          const SliverFillRemaining(
             hasScrollBody: false,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  CustomButton(onPressed: (){}, title: 'الدفع 120 جنيه'),
-                ],
-              ),
-            ),
+            child: CustomCartButton(),
           )
         ],
       ),
