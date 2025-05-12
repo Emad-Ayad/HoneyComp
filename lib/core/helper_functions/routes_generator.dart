@@ -6,6 +6,8 @@ import 'package:honey_comp/features/home/presentation/view/main_view.dart';
 import 'package:honey_comp/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:honey_comp/features/splash/presentation/view/splash_view.dart';
 
+import '../../features/checkout/presentation/views/checkout_view.dart';
+
 Route<dynamic> routerGenerator(RouteSettings settings) {
   switch (settings.name) {
     case SplashView.roteName:
@@ -24,6 +26,9 @@ Route<dynamic> routerGenerator(RouteSettings settings) {
 
     case BestSellingView.routeName:
       return MaterialPageRoute(builder: (context) => const BestSellingView());
+
+    case CheckoutView.routeName:
+      return MaterialPageRoute(builder: (context) => const CheckoutView());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
