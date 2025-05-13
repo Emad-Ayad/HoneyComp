@@ -17,7 +17,7 @@ abstract class AppColors {
   static const Color background = Color(0xFFFFF8E1);
 
   /// Soft gray – borders or muted text
-  static const Color lightGray = Color(0xFFF2F3F3);
+  static const Color lightGray = Color(0x33D9D9D9);
 
   /// Soft gray – borders or muted text
   static const Color gray = Color(0xFFBDBDBD);
