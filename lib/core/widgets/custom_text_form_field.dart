@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -33,7 +34,7 @@ class CustomTextFormField extends StatelessWidget {
           hintStyle: AppTextStyles.bodyText2.copyWith(
             color: const Color(0xff949d9e),
           ),
-          fillColor: const Color(0xfff9fafa),
+          fillColor: AppColors.lightGray,
           filled: true,
           border: buildOutlineInputBorder(),
           enabledBorder: buildOutlineInputBorder(),

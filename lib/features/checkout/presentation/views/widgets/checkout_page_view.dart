@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:honey_comp/features/checkout/presentation/views/widgets/address_page.dart';
 import 'package:honey_comp/features/checkout/presentation/views/widgets/checkout_steps.dart';
+import 'package:honey_comp/features/checkout/presentation/views/widgets/payment_page.dart';
 import 'package:honey_comp/features/checkout/presentation/views/widgets/shipping_page.dart';
 
 class CheckoutPageView extends StatelessWidget {
@@ -25,9 +26,8 @@ class CheckoutPageView extends StatelessWidget {
 
 List<Widget> getPages() {
   return [
-    ShippingPage(),
-    AddressPage(),
-    SizedBox(),
-    SizedBox(),
+    const ShippingPage(),
+    const AddressPage(),
+    const PaymentPage(),
   ];
 }
