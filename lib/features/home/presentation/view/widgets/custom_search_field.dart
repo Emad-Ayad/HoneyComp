@@ -10,7 +10,7 @@ class CustomSearchField extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(boxShadow: [
         BoxShadow(
-          color: Color(0X0A000000),
+          color: AppColors.lightGray,
           blurRadius: 9,
           offset: Offset(0, 2),
           spreadRadius: 0,
@@ -22,7 +22,7 @@ class CustomSearchField extends StatelessWidget {
             prefixIcon: const Icon(Icons.search),
             hintText: "أبحث عن....",
             hintStyle: AppTextStyles.bodyText2.copyWith(
-              color: const Color(0xff949d9e),
+              color: AppColors.gray,
             ),
             fillColor: AppColors.background,
             filled: true,
@@ -36,10 +36,10 @@ class CustomSearchField extends StatelessWidget {
 
 OutlineInputBorder buildOutlineInputBorder() {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(4),
+    borderRadius: BorderRadius.circular(8),
     borderSide: const BorderSide(
-      width: 2,
-      color: Colors.white,
+      width: 1,
+      color: AppColors.secondaryColor,
     ),
   );
 }

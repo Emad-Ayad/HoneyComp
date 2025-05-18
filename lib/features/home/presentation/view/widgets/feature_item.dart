@@ -3,6 +3,7 @@ import 'package:honey_comp/core/constants/app_text_styles.dart';
 import 'package:honey_comp/gen/assets.gen.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as svg;
 
+import '../../../../../core/constants/app_colors.dart';
 import 'custom_features_button.dart';
 
 class FeatureItem extends StatelessWidget {
@@ -16,9 +17,17 @@ class FeatureItem extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
+      child: Container(
         width: width * 0.85,
         height: height * 0.2,
+        decoration: const BoxDecoration(boxShadow: [
+          BoxShadow(
+            color: AppColors.lightGray,
+            blurRadius: 9,
+            offset: Offset(0, 2),
+            spreadRadius: 0,
+          )
+        ]),
         child: Stack(
           children: [
             Positioned(
