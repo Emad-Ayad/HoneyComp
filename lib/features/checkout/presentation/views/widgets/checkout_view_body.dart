@@ -42,6 +42,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           buildAppBar(context, title: "الشحن"),
           const SizedBox(height: 20),
           CheckoutSteps(
+            pageController: pageController,
             currentPageIndex: currentPageIndex,
           ),
           CheckoutPageView(pageController: pageController),
