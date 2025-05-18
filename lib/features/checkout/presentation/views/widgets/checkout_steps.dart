@@ -3,7 +3,9 @@ import 'package:honey_comp/features/checkout/presentation/views/widgets/in_activ
 import 'package:honey_comp/features/checkout/presentation/views/widgets/step_item.dart';
 
 class CheckoutSteps extends StatelessWidget {
-  const CheckoutSteps({super.key});
+  const CheckoutSteps({super.key, required this.currentPageIndex});
+
+  final int currentPageIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class CheckoutSteps extends StatelessWidget {
         child: StepItem(
           text: getSteps()[index],
           index: (index + 1).toString(),
-          isActive: false,
+          isActive: currentPageIndex >= index,
         ),
       );
     }));

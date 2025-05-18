@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:honey_comp/core/constants/app_text_styles.dart';
 import 'package:honey_comp/features/checkout/presentation/views/widgets/payment_item.dart';
 
+import 'address_widget.dart';
 import 'order_summary_widget.dart';
 
 class PaymentPage extends StatelessWidget {
@@ -14,6 +16,11 @@ class PaymentPage extends StatelessWidget {
         PaymentItem(
           title: "ملخص الطلب:",
           child: OrderSummaryWidget(),
+        ),
+        SizedBox(height: 16),
+        PaymentItem(
+          title: 'يرجي تأكيد  طلبك',
+          child: AddressWidget(),
         )
       ],
     );

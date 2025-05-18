@@ -8,6 +8,7 @@ class PaymentItem extends StatelessWidget {
 
   final String title;
   final Widget child;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,13 +18,14 @@ class PaymentItem extends StatelessWidget {
           title,
           style: AppTextStyles.bodyText2.copyWith(fontWeight: FontWeight.bold),
         ),
+        const SizedBox(height: 4),
         Container(
           decoration: BoxDecoration(
             color: AppColors.lightGray,
             borderRadius: BorderRadius.circular(4),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 8),
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
             child: child,
           ),
         ),

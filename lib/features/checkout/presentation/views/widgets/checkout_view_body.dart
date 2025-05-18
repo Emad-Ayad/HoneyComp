@@ -14,10 +14,16 @@ class CheckoutViewBody extends StatefulWidget {
 
 class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   late PageController pageController;
+  int currentPageIndex = 0;
 
   @override
   void initState() {
     pageController = PageController();
+    pageController.addListener(() {
+      setState(() {
+        currentPageIndex = pageController.page!.toInt();
+      });
+    });
     super.initState();
   }
 
@@ -35,7 +41,9 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         children: [
           buildAppBar(context, title: "الشحن"),
           const SizedBox(height: 20),
-          const CheckoutSteps(),
+          CheckoutSteps(
+            currentPageIndex: currentPageIndex,
+          ),
           CheckoutPageView(pageController: pageController),
           CustomButton(
               onPressed: () {
