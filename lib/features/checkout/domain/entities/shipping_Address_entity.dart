@@ -6,6 +6,11 @@ class ShippingAddressEntity {
   String? addressDetails;
   String? phone;
 
-  ShippingAddressEntity(this.fullName, this.email, this.address, this.city,
-      this.addressDetails, this.phone);
+  ShippingAddressEntity(
+      {this.fullName,
+      this.email,
+      this.address,
+      this.city,
+      this.addressDetails,
+      this.phone});
 }

@@ -6,7 +6,7 @@ import '../../../home/domain/entities/cart_entity.dart';
 class OrdersEntity {
   final CartEntity cartEntity;
   bool? payWithCash;
-  ShippingAddressEntity? shippingAddressEntity ;
+  ShippingAddressEntity shippingAddressEntity = ShippingAddressEntity();
 
-  OrdersEntity(this.cartEntity, {this.payWithCash, this.shippingAddressEntity});
+  OrdersEntity(this.cartEntity, {this.payWithCash});
 }
