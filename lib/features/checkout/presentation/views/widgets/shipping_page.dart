@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:honey_comp/features/checkout/domain/entities/orders_entity.dart';
 import 'package:honey_comp/features/checkout/presentation/views/widgets/shipping_item.dart';
 
 class ShippingPage extends StatefulWidget {
@@ -8,36 +10,50 @@ class ShippingPage extends StatefulWidget {
   State<ShippingPage> createState() => _ShippingPageState();
 }
 
-class _ShippingPageState extends State<ShippingPage> {
+class _ShippingPageState extends State<ShippingPage>
+    with AutomaticKeepAliveClientMixin {
   int selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
+    // this super is for the automatic Mixin above
+    super.build(context);
+    var orderEntity = context.read<OrdersEntity>();
     return Column(
       children: [
         const SizedBox(height: 32),
         ShippingItem(
           title: "الدفع عند الاستلام",
           subtitle: 'التسليم في المكان',
-          price: '40 جنيهاً',
+          price: (orderEntity.cartEntity.getTotalPrice() + 40).toString(),
           onPressed: () {
             selectedIndex = 0;
             setState(() {});
+            orderEntity.payWithCash = true;
           },
           isSelected: selectedIndex == 0,
         ),
         const SizedBox(height: 16),
-         ShippingItem(
+        ShippingItem(
           title: "الدفع اونلاين",
           subtitle: 'التسليم في المكان',
-          price: '40 جنيهاً',
+          price: context
+              .read<OrdersEntity>()
+              .cartEntity
+              .getTotalPrice()
+              .toString(),
           onPressed: () {
             selectedIndex = 1;
             setState(() {});
+            orderEntity.payWithCash = false;
           },
           isSelected: selectedIndex == 1,
         )
       ],
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

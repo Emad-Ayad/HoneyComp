@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/features/checkout/presentation/views/widgets/in_active_step_item.dart';
 import 'package:honey_comp/features/checkout/presentation/views/widgets/step_item.dart';
+
+import '../../../../../core/widgets/build_snack_bar.dart';
+import '../../../domain/entities/orders_entity.dart';
 
 class CheckoutSteps extends StatelessWidget {
   const CheckoutSteps(
@@ -13,14 +17,19 @@ class CheckoutSteps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var orderEntity=context.read<OrdersEntity>();
     return Row(
         children: List.generate(getSteps().length, (index) {
       return Expanded(
         child: GestureDetector(
           onTap: () {
-            pageController.animateToPage(index,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.bounceIn);
+            if(orderEntity.payWithCash != null){
+              pageController.animateToPage(index,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.bounceIn);
+            }else{
+              buildSnackBar(context,"برجاء اختيار طريقة الدفع");
+            }
           },
           child: StepItem(
             text: getSteps()[index],

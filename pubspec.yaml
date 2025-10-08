@@ -38,7 +38,7 @@ dependencies:
   build_runner: ^2.4.13
   flutter_gen_runner: ^5.8.0
   flutter_svg: ^2.0.17
-  intl: ^0.19.0
+  intl: 0.20.2
   flutter_localizations:
     sdk: flutter
   dots_indicator: ^3.0.0
@@ -54,9 +54,11 @@ dependencies:
   flutter_facebook_auth: ^6.0.4
   cloud_firestore: ^5.6.3
   flutter_svg_provider: ^1.0.7
-  skeletonizer: ^1.4.3
+  skeletonizer: ^2.0.0-pre
   cached_network_image: ^3.4.1
   equatable: ^2.0.7
+  provider: ^6.1.5
+  supabase_flutter: ^2.9.1
 
 
 

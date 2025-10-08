@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:honey_comp/core/widgets/build_snack_bar.dart';
 import 'package:honey_comp/features/checkout/presentation/views/checkout_view.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
@@ -22,7 +23,17 @@ class CustomCartButton extends StatelessWidget {
             children: [
               CustomButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, CheckoutView.routeName);
+                  if (context
+                      .read<CartCubit>()
+                      .cartEntity
+                      .cartList
+                      .isNotEmpty) {
+                    Navigator.pushNamed(context, CheckoutView.routeName,
+                        arguments:
+                            context.read<CartCubit>().cartEntity);
+                  } else {
+                    buildSnackBar(context, "لا توجد منتجات بالسلة");
+                  }
                 },
                 title:
                     'الدفع ${context.watch<CartCubit>().cartEntity.getTotalPrice()} جنيه',

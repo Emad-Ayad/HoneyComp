@@ -15,7 +15,9 @@ class CustomHomeAppBar extends StatelessWidget {
       child: ListTile(
         leading: Assets.images.profile.image(),
         title: Text(
-          getUser().name,
+          "Emad",
+          //TODO Wait till finish developing
+          // getUser().name,
           style: AppTextStyles.subtitle1.copyWith(fontWeight: FontWeight.bold),
         ),
         subtitle: const Text(
