@@ -37,7 +37,9 @@ class CheckoutPageView extends StatelessWidget {
         formKey: formKey,
         valueListenable: valueListenable,
       ),
-      const PaymentPage(),
+      PaymentPage(
+        pageController: pageController,
+      ),
     ];
   }
 }

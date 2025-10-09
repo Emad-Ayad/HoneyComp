@@ -5,22 +5,25 @@ import 'address_widget.dart';
 import 'order_summary_widget.dart';
 
 class PaymentPage extends StatelessWidget {
-  const PaymentPage({super.key});
+  const PaymentPage({super.key, required this.pageController});
+
+  final PageController pageController;
+
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 32),
-          PaymentItem(
+          const SizedBox(height: 32),
+          const PaymentItem(
             title: "ملخص الطلب:",
             child: OrderSummaryWidget(),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           PaymentItem(
             title: 'يرجي تأكيد  طلبك',
-            child: AddressWidget(),
+            child: AddressWidget(pageController: pageController,),
           )
         ],
       ),
