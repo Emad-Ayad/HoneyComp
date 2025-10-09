@@ -9,19 +9,21 @@ class PaymentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        SizedBox(height: 32),
-        PaymentItem(
-          title: "ملخص الطلب:",
-          child: OrderSummaryWidget(),
-        ),
-        SizedBox(height: 16),
-        PaymentItem(
-          title: 'يرجي تأكيد  طلبك',
-          child: AddressWidget(),
-        )
-      ],
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 32),
+          PaymentItem(
+            title: "ملخص الطلب:",
+            child: OrderSummaryWidget(),
+          ),
+          SizedBox(height: 16),
+          PaymentItem(
+            title: 'يرجي تأكيد  طلبك',
+            child: AddressWidget(),
+          )
+        ],
+      ),
     );
   }
 }

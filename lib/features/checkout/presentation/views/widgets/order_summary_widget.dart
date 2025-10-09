@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:honey_comp/features/checkout/domain/entities/orders_entity.dart';
 
 import '../../../../../core/constants/app_text_styles.dart';
-
 
 class OrderSummaryWidget extends StatelessWidget {
   const OrderSummaryWidget({
@@ -20,9 +21,9 @@ class OrderSummaryWidget extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              "150 جنيه",
-              style: AppTextStyles.bodyText1
-                  .copyWith(fontWeight: FontWeight.bold),
+              "${context.read<OrdersEntity>().cartEntity.getTotalPrice()} جنيه",
+              style:
+                  AppTextStyles.bodyText1.copyWith(fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -51,14 +52,14 @@ class OrderSummaryWidget extends StatelessWidget {
           children: [
             Text(
               "الكلي",
-              style: AppTextStyles.bodyText1
-                  .copyWith(fontWeight: FontWeight.bold),
+              style:
+                  AppTextStyles.bodyText1.copyWith(fontWeight: FontWeight.bold),
             ),
             const Spacer(),
             Text(
-              "180 جنيه",
-              style: AppTextStyles.bodyText1
-                  .copyWith(fontWeight: FontWeight.bold),
+              "${context.read<OrdersEntity>().cartEntity.getTotalPrice() + 40} جنيه",
+              style:
+                  AppTextStyles.bodyText1.copyWith(fontWeight: FontWeight.bold),
             ),
           ],
         ),
