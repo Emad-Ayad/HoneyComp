@@ -7,6 +7,7 @@ class OrdersEntity {
   final CartEntity cartEntity;
   bool? payWithCash;
   ShippingAddressEntity shippingAddressEntity = ShippingAddressEntity();
+  final String uId;
 
-  OrdersEntity(this.cartEntity, {this.payWithCash});
+  OrdersEntity(this.cartEntity, {this.payWithCash, required this.uId});
 }

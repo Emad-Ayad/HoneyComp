@@ -6,6 +6,8 @@ import 'package:honey_comp/core/services/firebase_auth_service.dart';
 import 'package:honey_comp/core/services/firestore_service.dart';
 import 'package:honey_comp/features/auth/data/repos_impl/auth_repo_impl.dart';
 import 'package:honey_comp/features/auth/domain/repos/auth_repo.dart';
+import 'package:honey_comp/features/checkout/data/repos_impl/orders_repo_impl.dart';
+import 'package:honey_comp/features/checkout/domain/repos/orders_repo.dart';
 
 final getIt = GetIt.instance;
 
@@ -19,5 +21,8 @@ void setup() {
   );
   getIt.registerSingleton<ProductsRepo>(
     ProductsRepoImpl(dataBaseService: getIt<DataBaseService>()),
+  );
+  getIt.registerSingleton<OrdersRepo>(
+    OrdersRepoImpl(dataBaseService: getIt<DataBaseService>()),
   );
 }
