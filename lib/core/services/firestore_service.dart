@@ -10,9 +10,13 @@ class FirestoreService implements DataBaseService {
       required Map<String, dynamic> data,
       String? docId}) async {
     if (docId != null) {
-      await firestore.collection(path).doc(docId).set(data);
+      await firestore.collection(path).doc(docId).set(data).timeout(const Duration(seconds: 10), onTimeout: () {
+        throw Exception('Request timed out. Please check your internet connection.');
+      });
     } else {
-      await firestore.collection(path).add(data);
+      await firestore.collection(path).add(data).timeout(const Duration(seconds: 10), onTimeout: () {
+        throw Exception('Request timed out. Please check your internet connection.');
+      });
     }
   }
 

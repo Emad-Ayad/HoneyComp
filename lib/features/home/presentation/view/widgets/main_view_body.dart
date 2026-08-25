@@ -6,6 +6,7 @@ import 'package:honey_comp/features/home/presentation/view/widgets/products_view
 
 import 'cart_view.dart';
 import 'home_view.dart';
+import '../../../../profile/presentation/view/profile_view.dart';
 
 class MainViewBody extends StatelessWidget {
   const MainViewBody({
@@ -33,6 +34,7 @@ class MainViewBody extends StatelessWidget {
             HomeView(),
             ProductsView(),
             CartView(),
+            ProfileView(),
           ],
         ),
       ),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:honey_comp/core/errors/failure.dart';
 import 'package:honey_comp/core/helper_functions/backend_endpoints.dart';
@@ -21,6 +23,7 @@ class OrdersRepoImpl implements OrdersRepo {
       );
       return const Right(null);
     } catch (e) {
+      log('Error in addOrder: $e');
       return Left(ServerFailure(errMessage: 'حدث خطأ أثناء إرسال الطلب. حاول مرة أخرى.'));
     }
   }
