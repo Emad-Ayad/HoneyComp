@@ -42,3 +42,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 lib/core/helper_functions/paymob_constants.dart
+macos/Flutter/GeneratedPluginRegistrant.swift
