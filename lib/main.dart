@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:honey_comp/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
@@ -31,22 +33,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primaryColor: AppColors.primaryColor,
-        fontFamily: 'Cairo',
+    return BlocProvider(
+      create: (context) => CartCubit(),
+      child: MaterialApp(
+        theme: ThemeData(
+          primaryColor: AppColors.primaryColor,
+          fontFamily: 'Cairo',
+        ),
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        locale: const Locale('ar'),
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: routerGenerator,
+        initialRoute: MainView.routeName,
       ),
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale('ar'),
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: routerGenerator,
-      initialRoute: MainView.routeName,
     );
   }
 }

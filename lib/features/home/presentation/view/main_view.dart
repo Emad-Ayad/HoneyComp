@@ -28,16 +28,13 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CartCubit(),
-      child: Scaffold(
-        backgroundColor: AppColors.background,
-        bottomNavigationBar: CustomHomeNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: _onItemTapped,
-        ),
-        body: MainViewBody(currentIndex: _currentIndex),
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      bottomNavigationBar: CustomHomeNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onItemTapped,
       ),
+      body: MainViewBody(currentIndex: _currentIndex),
     );
   }
 }

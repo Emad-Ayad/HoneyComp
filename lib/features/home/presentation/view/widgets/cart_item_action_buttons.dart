@@ -4,6 +4,7 @@ import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
 import 'package:honey_comp/features/home/domain/entities/cart_item_entity.dart';
 import 'package:honey_comp/features/home/presentation/cubits/cart_item_cubit/cart_item_cubit.dart';
+import 'package:honey_comp/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 
 class CartItemActionButtons extends StatelessWidget {
   const CartItemActionButtons({super.key, required this.cartItemEntity});
@@ -21,6 +22,7 @@ class CartItemActionButtons extends StatelessWidget {
           onPressed: () {
             cartItemEntity.increaseCount();
             context.read<CartItemCubit>().updateCartItem(cartItemEntity);
+            context.read<CartCubit>().saveCart();
           },
         ),
         Padding(
@@ -38,6 +40,7 @@ class CartItemActionButtons extends StatelessWidget {
           onPressed: () {
             cartItemEntity.decreaseCount();
             context.read<CartItemCubit>().updateCartItem(cartItemEntity);
+            context.read<CartCubit>().saveCart();
           },
         ),
       ],

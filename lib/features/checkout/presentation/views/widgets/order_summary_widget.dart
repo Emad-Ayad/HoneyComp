@@ -28,18 +28,18 @@ class OrderSummaryWidget extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 9),
-        const Row(
+        Row(
           children: [
-            Text(
+            const Text(
               "التوصيل  :",
               style: AppTextStyles.bodyText2,
             ),
-            Spacer(),
+            const Spacer(),
             Text(
-              "40 جنيه",
+              "${context.read<OrdersEntity>().payWithCash == true ? 40 : 0} جنيه",
               style: AppTextStyles.bodyText2,
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
           ],
         ),
         const Padding(
@@ -57,7 +57,7 @@ class OrderSummaryWidget extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              "${context.read<OrdersEntity>().cartEntity.getTotalPrice() + 40} جنيه",
+              "${context.read<OrdersEntity>().cartEntity.getTotalPrice() + (context.read<OrdersEntity>().payWithCash == true ? 40 : 0)} جنيه",
               style:
                   AppTextStyles.bodyText1.copyWith(fontWeight: FontWeight.bold),
             ),

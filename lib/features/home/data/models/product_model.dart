@@ -71,6 +71,24 @@ class ProductModel {
         reviews: reviews.map((e) => e.toEntity()).toList());
   }
 
+  factory ProductModel.fromEntity(ProductEntity entity) {
+    return ProductModel(
+      name: entity.name,
+      avgRate: entity.avgRate,
+      code: entity.code,
+      description: entity.description,
+      isFeatured: entity.isFeatured,
+      price: entity.price,
+      expirationMonths: entity.expirationMonths,
+      numOfCalories: entity.numOfCalories,
+      unitAmount: entity.unitAmount,
+      sellingCount: 0, // default if not provided
+      isOrganic: entity.isOrganic,
+      reviews: entity.reviews.map((e) => ReviewModel.fromEntity(e)).toList(),
+      imageUrl: entity.imageUrl,
+    );
+  }
+
   toJson() {
     return {
       "name": name,
