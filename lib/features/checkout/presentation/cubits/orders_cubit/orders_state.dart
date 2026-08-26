@@ -9,6 +9,11 @@ class OrdersLoading extends OrdersState {}
 
 class OrdersSuccess extends OrdersState {}
 
+class OrdersPaymentKeyGenerated extends OrdersState {
+  final String paymentKey;
+  OrdersPaymentKeyGenerated({required this.paymentKey});
+}
+
 class OrdersFailure extends OrdersState {
   final String errMessage;
 

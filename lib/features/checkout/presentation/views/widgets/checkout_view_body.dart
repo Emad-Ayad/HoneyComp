@@ -5,6 +5,7 @@ import 'package:honey_comp/core/widgets/custom_button.dart';
 import 'package:honey_comp/features/checkout/domain/entities/orders_entity.dart';
 import 'package:honey_comp/features/checkout/presentation/cubits/orders_cubit/orders_cubit.dart';
 import 'package:honey_comp/features/checkout/presentation/cubits/orders_cubit/orders_state.dart';
+import 'package:honey_comp/features/checkout/presentation/views/payment_webview.dart';
 import 'package:honey_comp/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:honey_comp/features/home/presentation/view/main_view.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -50,7 +51,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   Widget build(BuildContext context) {
     var orderEntity = context.read<OrdersEntity>();
     return BlocConsumer<OrdersCubit, OrdersState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is OrdersSuccess) {
           buildSnackBar(context, 'تم تأكيد طلبك بنجاح');
           context.read<CartCubit>().clearCart();
@@ -58,6 +59,24 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               context, MainView.routeName, (route) => false);
         } else if (state is OrdersFailure) {
           buildSnackBar(context, state.errMessage);
+        } else if (state is OrdersPaymentKeyGenerated) {
+          // Launch Paymob WebView
+          final bool? paymentSuccess = await Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PaymentWebView(paymentKey: state.paymentKey),
+            ),
+          );
+          
+          if (paymentSuccess == true) {
+            // If payment succeeds, tell Cubit to save to database
+            if (!mounted) return;
+            context.read<OrdersCubit>().saveOrderToDatabase(orderEntity);
+          } else {
+            // Payment failed or cancelled
+            if (!mounted) return;
+            buildSnackBar(context, 'تم إلغاء أو فشل عملية الدفع الإلكتروني.');
+          }
         }
       },
       builder: (context, state) {
@@ -85,7 +104,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                       } else if (currentPageIndex == 1) {
                         _handelAddressValidation();
                       } else if (currentPageIndex == 2) {
-                        context.read<OrdersCubit>().addOrder(orderEntity);
+                        context.read<OrdersCubit>().processCheckout(orderEntity);
                       }
                     },
                     title: currentPageIndex == 2 ? 'تأكيد الطلب' : 'التالي'),
