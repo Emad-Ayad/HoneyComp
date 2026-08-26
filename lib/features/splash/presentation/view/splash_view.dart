@@ -51,10 +51,10 @@ class _SplashViewState extends State<SplashView> {
         SharedPreferenceSingleton.getBool(kIsOnBoardingSeen);
     Future.delayed(const Duration(seconds: 2), () {
       if (isOnBoardingSeen) {
-        var loggedIn= FirebaseAuthService().isLoggedIn();
-        if(loggedIn){
-          Navigator.pushReplacementNamed(context, LoginView.routeName);
-        }else{
+        var loggedIn = FirebaseAuthService().isLoggedIn();
+        if (loggedIn) {
+          Navigator.pushReplacementNamed(context, MainView.routeName);
+        } else {
           Navigator.pushReplacementNamed(context, LoginView.routeName);
         }
       } else {

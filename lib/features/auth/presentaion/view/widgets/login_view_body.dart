@@ -71,8 +71,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         globalKey.currentState!.save();
                         context.read<SignInCubit>().signInWithEmailAndPassword(
                             email: email, password: password);
-                        Navigator.pushReplacementNamed(
-                            context, MainView.routeName);
                       } else {
                         setState(() {
                           autoValidateMode = AutovalidateMode.always;
@@ -109,8 +107,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 SocialAuth(
                   onPressed: () {
                     context.read<SignInCubit>().signInWithGoogle();
-                    Navigator.pushReplacementNamed(
-                        context, MainView.routeName);
                   },
                   title: "تسجيل بواسطة جوجل",
                   icon: Assets.images.google.image(),

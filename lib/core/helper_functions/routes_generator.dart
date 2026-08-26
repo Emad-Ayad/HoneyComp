@@ -8,6 +8,7 @@ import 'package:honey_comp/features/splash/presentation/view/splash_view.dart';
 
 import '../../features/checkout/presentation/views/checkout_view.dart';
 import '../../features/home/domain/entities/cart_entity.dart';
+import 'package:honey_comp/features/profile/presentation/view/my_orders_view.dart';
 
 Route<dynamic> routerGenerator(RouteSettings settings) {
   switch (settings.name) {
@@ -33,6 +34,9 @@ Route<dynamic> routerGenerator(RouteSettings settings) {
           builder: (context) => CheckoutView(
                 cartEntity: settings.arguments as CartEntity,
               ));
+
+    case MyOrdersView.routeName:
+      return MaterialPageRoute(builder: (context) => const MyOrdersView());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

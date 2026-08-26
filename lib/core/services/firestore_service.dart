@@ -31,15 +31,20 @@ class FirestoreService implements DataBaseService {
       return data.data();
     } else {
       Query<Map<String,dynamic>> data = firestore.collection(path);
-      if(query != null){
-        if(query['orderBy'] != null){
-          var orderByField=query['orderBy'];
-          var descending=query['descending'];
-          data=data.orderBy(orderByField,descending: descending);
+      if (query != null) {
+        if (query['orderBy'] != null) {
+          var orderByField = query['orderBy'];
+          var descending = query['descending'];
+          data = data.orderBy(orderByField, descending: descending);
         }
-        if(query['limit'] !=null){
-          var limit= query['limit'];
-          data= data.limit(limit);
+        if (query['limit'] != null) {
+          var limit = query['limit'];
+          data = data.limit(limit);
+        }
+        if (query['where'] != null) {
+          var whereField = query['where'];
+          var isEqualTo = query['isEqualTo'];
+          data = data.where(whereField, isEqualTo: isEqualTo);
         }
       }
       var result= await data.get();

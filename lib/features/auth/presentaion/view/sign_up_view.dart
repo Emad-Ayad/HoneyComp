@@ -5,6 +5,7 @@ import 'package:honey_comp/core/widgets/build_snack_bar.dart';
 import 'package:honey_comp/features/auth/domain/repos/auth_repo.dart';
 import 'package:honey_comp/features/auth/presentaion/cubits/signup_cubit/signup_cubit.dart';
 import 'package:honey_comp/features/auth/presentaion/view/widgets/sign_up_view_body.dart';
+import 'package:honey_comp/features/home/presentation/view/main_view.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class SignUpView extends StatelessWidget {
@@ -31,7 +32,8 @@ class SignUpBlocConsumer extends StatelessWidget {
     return BlocConsumer<SignupCubit, SignupState>(
       listener: (context, state) {
         if (state is SignupSuccess) {
-          buildSnackBar(context, "SignUp Done Successfully");
+          Navigator.pushNamedAndRemoveUntil(
+              context, MainView.routeName, (route) => false);
         }
         if (state is SignupFailure) {
           buildSnackBar(context, state.message);

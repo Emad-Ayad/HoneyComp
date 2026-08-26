@@ -9,6 +9,7 @@ import 'package:honey_comp/core/services/get_it_service.dart';
 import 'package:honey_comp/core/services/shared_preferences_singleton.dart';
 import 'package:honey_comp/features/auth/presentaion/view/login_view.dart';
 import 'package:honey_comp/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:honey_comp/features/profile/presentation/view/my_orders_view.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
@@ -52,7 +53,7 @@ class ProfileViewBody extends StatelessWidget {
                     icon: Icons.shopping_bag_outlined,
                     title: 'طلباتي',
                     onTap: () {
-                      // Navigate to My Orders
+                      Navigator.pushNamed(context, MyOrdersView.routeName);
                     },
                   ),
                   _buildProfileOption(

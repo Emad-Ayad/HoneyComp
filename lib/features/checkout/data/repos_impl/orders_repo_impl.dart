@@ -27,4 +27,28 @@ class OrdersRepoImpl implements OrdersRepo {
       return Left(ServerFailure(errMessage: 'حدث خطأ أثناء إرسال الطلب. حاول مرة أخرى.'));
     }
   }
+  @override
+  Future<Either<Failure, List<OrdersEntity>>> fetchUserOrders({required String userId}) async {
+    try {
+      var data = await dataBaseService.getData(
+        path: BackendEnpPoints.addOrderEndPoint,
+        query: {
+          'where': 'uId',
+          'isEqualTo': userId,
+        },
+      ) as List<dynamic>;
+
+      List<OrdersEntity> orders = data.map((e) {
+        return OrdersModel.fromJson(e as Map<String, dynamic>).toEntity();
+      }).toList();
+
+      // Sort locally to avoid needing a Firestore composite index
+      orders.sort((a, b) => b.date.compareTo(a.date));
+
+      return Right(orders);
+    } catch (e) {
+      log('Error in fetchUserOrders: $e');
+      return Left(ServerFailure(errMessage: 'حدث خطأ أثناء جلب الطلبات. حاول مرة أخرى.'));
+    }
+  }
 }

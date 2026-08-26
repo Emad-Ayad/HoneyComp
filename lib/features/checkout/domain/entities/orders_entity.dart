@@ -8,6 +8,8 @@ class OrdersEntity {
   bool? payWithCash;
   ShippingAddressEntity shippingAddressEntity = ShippingAddressEntity();
   final String uId;
+  final String status;
+  final String date;
 
-  OrdersEntity(this.cartEntity, {this.payWithCash, required this.uId});
+  OrdersEntity(this.cartEntity, {this.payWithCash, required this.uId, this.status = 'Pending', this.date = ''});
 }

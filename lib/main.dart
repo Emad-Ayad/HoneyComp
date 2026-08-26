@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
         locale: const Locale('ar'),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: routerGenerator,
-        initialRoute: MainView.routeName,
+        initialRoute: SplashView.roteName,
       ),
     );
   }
