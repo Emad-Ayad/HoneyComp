@@ -58,4 +58,15 @@ class FirestoreService implements DataBaseService {
     var data = await firestore.collection(path).doc(documentId).get();
     return data.exists;
   }
+
+  @override
+  Future<void> updateData({
+    required String path,
+    required String docId,
+    required Map<String, dynamic> data,
+  }) async {
+    await firestore.collection(path).doc(docId).update(data).timeout(const Duration(seconds: 10), onTimeout: () {
+      throw Exception('Request timed out. Please check your internet connection.');
+    });
+  }
 }

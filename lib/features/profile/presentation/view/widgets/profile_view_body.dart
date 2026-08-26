@@ -7,23 +7,47 @@ import 'package:honey_comp/core/helper_functions/get_user_data.dart';
 import 'package:honey_comp/core/services/firebase_auth_service.dart';
 import 'package:honey_comp/core/services/get_it_service.dart';
 import 'package:honey_comp/core/services/shared_preferences_singleton.dart';
+import 'package:honey_comp/features/auth/domain/entities/user_entity.dart';
 import 'package:honey_comp/features/auth/presentaion/view/login_view.dart';
 import 'package:honey_comp/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:honey_comp/features/profile/presentation/view/edit_profile_view.dart';
 import 'package:honey_comp/features/profile/presentation/view/my_orders_view.dart';
 
-class ProfileViewBody extends StatelessWidget {
+class ProfileViewBody extends StatefulWidget {
   const ProfileViewBody({super.key});
 
   @override
+  State<ProfileViewBody> createState() => _ProfileViewBodyState();
+}
+
+class _ProfileViewBodyState extends State<ProfileViewBody> {
+  late UserEntity user;
+
+  @override
+  void initState() {
+    super.initState();
+    user = getUser();
+  }
+
+  void _refreshUser() {
+    setState(() {
+      user = getUser();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var user = getUser();
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 32),
-            // User Header
-            Column(
+      child: Column(
+        children: [
+          // Header Section
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Column(
               children: [
                 const CircleAvatar(
                   radius: 50,
@@ -42,12 +66,16 @@ class ProfileViewBody extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 32),
-            
-            // Profile Options
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
+          ),
+          
+          const SizedBox(height: 8),
+          
+          // Options Section
+          Expanded(
+            child: Container(
+              color: const Color(0xFFF9F9F9), // Light background for the list
+              child: ListView(
+                padding: const EdgeInsets.symmetric(vertical: 8),
                 children: [
                   _buildProfileOption(
                     icon: Icons.shopping_bag_outlined,
@@ -57,17 +85,20 @@ class ProfileViewBody extends StatelessWidget {
                     },
                   ),
                   _buildProfileOption(
-                    icon: Icons.edit_outlined,
+                    icon: Icons.person_outline,
                     title: 'تعديل الملف الشخصي',
-                    onTap: () {
-                      // Navigate to Edit Profile
+                    onTap: () async {
+                      final result = await Navigator.pushNamed(context, EditProfileView.routeName);
+                      if (result == true) {
+                        _refreshUser();
+                      }
                     },
                   ),
                   _buildProfileOption(
                     icon: Icons.location_on_outlined,
                     title: 'عناويني',
                     onTap: () {
-                      // Navigate to My Addresses
+                      // Navigate to Addresses
                     },
                   ),
                   _buildProfileOption(
@@ -78,27 +109,29 @@ class ProfileViewBody extends StatelessWidget {
                     },
                   ),
                   _buildProfileOption(
-                    icon: Icons.headset_mic_outlined,
+                    icon: Icons.help_outline,
                     title: 'تواصل معنا',
                     onTap: () {
                       // Navigate to Contact Us
                     },
                   ),
-                  const Divider(height: 32, thickness: 1),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8),
+                    child: Divider(height: 1, indent: 16, endIndent: 16),
+                  ),
                   _buildProfileOption(
                     icon: Icons.logout,
                     title: 'تسجيل الخروج',
                     isDestructive: true,
-                    onTap: () async {
+                    onTap: () {
                       _showLogoutDialog(context);
                     },
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 32),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -110,13 +143,14 @@ class ProfileViewBody extends StatelessWidget {
     bool isDestructive = false,
   }) {
     return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
       leading: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: isDestructive
               ? Colors.red.withValues(alpha: 0.1)
               : AppColors.primaryColor.withValues(alpha: 0.1),
-          shape: BoxShape.circle,
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Icon(
           icon,
@@ -150,14 +184,16 @@ class ProfileViewBody extends StatelessWidget {
               },
             ),
             TextButton(
-              child: const Text('تأكيد', style: TextStyle(color: Colors.red)),
+              child: const Text('تسجيل الخروج', style: TextStyle(color: Colors.red)),
               onPressed: () async {
                 Navigator.of(dialogContext).pop();
                 await getIt.get<FirebaseAuthService>().signOut();
                 SharedPreferenceSingleton.remove(kIUserData);
-                context.read<CartCubit>().clearCart();
-                Navigator.pushNamedAndRemoveUntil(
-                    context, LoginView.routeName, (route) => false);
+                if (context.mounted) {
+                  context.read<CartCubit>().clearCart();
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, LoginView.routeName, (route) => false);
+                }
               },
             ),
           ],
