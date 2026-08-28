@@ -1,4 +1,6 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:honey_comp/gen/assets.gen.dart';
+import 'package:flutter/material.dart';
 
 class NavigationBarEntity {
   final String activeImage, inActiveImage;
@@ -10,25 +12,25 @@ class NavigationBarEntity {
       required this.name});
 }
 
-List<NavigationBarEntity> get navigationBarItems => [
+List<NavigationBarEntity> getNavigationBarItems(BuildContext context) => [
       NavigationBarEntity(
         activeImage: Assets.images.icons.activeHome,
         inActiveImage: Assets.images.icons.home,
-        name: "الرئيسية",
+        name: S.of(context).home,
       ),
       NavigationBarEntity(
         activeImage: Assets.images.icons.activeProducts,
         inActiveImage: Assets.images.icons.products,
-        name: "المنتجات",
+        name: S.of(context).products,
       ),
       NavigationBarEntity(
         activeImage: Assets.images.icons.activeShoppingCart,
         inActiveImage: Assets.images.icons.shoppingCart,
-        name: "سلة التسوق",
+        name: S.of(context).shoppingCart,
       ),
       NavigationBarEntity(
         activeImage: Assets.images.icons.activeUser,
         inActiveImage: Assets.images.icons.user,
-        name: "حسابي",
+        name: S.of(context).myAccount,
       ),
     ];

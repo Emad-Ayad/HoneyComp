@@ -20,7 +20,7 @@ class CheckoutPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: PageView.builder(
-        itemCount: getSteps().length,
+        itemCount: getSteps(context).length,
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {

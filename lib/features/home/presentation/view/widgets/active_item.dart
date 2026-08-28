@@ -33,12 +33,17 @@ class ActiveItem extends StatelessWidget {
               ),
               child: Center(child: SvgPicture.asset(image)),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text(
-                text,
-                style: AppTextStyles.bodyText2.copyWith(fontWeight: FontWeight.w600)
-                    .copyWith(color: AppColors.primaryColor),
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    text,
+                    style: AppTextStyles.bodyText2.copyWith(fontWeight: FontWeight.w600)
+                        .copyWith(color: AppColors.primaryColor),
+                  ),
+                ),
               ),
             )
           ],

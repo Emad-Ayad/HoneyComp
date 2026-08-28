@@ -11,4 +11,10 @@ abstract class DataBaseService {
   });
 
   Future<bool> isUserExist({required String path, required String documentId});
+
+  Future<void> updateData({
+    required String path,
+    required String docId,
+    required Map<String, dynamic> data,
+  });
 }

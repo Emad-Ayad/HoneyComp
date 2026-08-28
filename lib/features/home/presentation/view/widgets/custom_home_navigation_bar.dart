@@ -38,7 +38,7 @@ class _CustomHomeNavigationBarState extends State<CustomHomeNavigationBar> {
         ],
       ),
       child: Row(
-        children: navigationBarItems.asMap().entries.map(
+        children: getNavigationBarItems(context).asMap().entries.map(
           (e) {
             var index = e.key;
             var entity = e.value;

@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:honey_comp/core/helper_functions/paymob_constants.dart';
@@ -40,7 +41,7 @@ class _PaymentWebViewState extends State<PaymentWebView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("الدفع الإلكتروني", style: TextStyle(color: Colors.black)),
+        title: Text(S.of(context).electronicPayment, style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,

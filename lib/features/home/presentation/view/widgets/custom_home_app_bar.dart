@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
@@ -20,8 +21,7 @@ class CustomHomeAppBar extends StatelessWidget {
           // getUser().name,
           style: AppTextStyles.subtitle1.copyWith(fontWeight: FontWeight.bold),
         ),
-        subtitle: const Text(
-          "مرحبا بك يا عمدة",
+        subtitle: Text(S.of(context).welcomeOmda,
           style: AppTextStyles.subtitle2,
         ),
         trailing: const NotificationWidget(),

@@ -12,6 +12,7 @@ import 'package:honey_comp/features/home/presentation/view/main_view.dart';
 import 'package:honey_comp/features/home/presentation/view/widgets/home_view.dart';
 import 'package:honey_comp/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:honey_comp/features/splash/presentation/view/splash_view.dart';
+import 'package:honey_comp/core/cubits/locale_cubit/locale_cubit.dart';
 
 import 'core/services/get_it_service.dart';
 import 'firebase_options.dart';
@@ -33,24 +34,31 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CartCubit(),
-      child: MaterialApp(
-        theme: ThemeData(
-          primaryColor: AppColors.primaryColor,
-          fontFamily: 'Cairo',
-        ),
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        locale: const Locale('ar'),
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: routerGenerator,
-        initialRoute: MainView.routeName,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(create: (context) => LocaleCubit()),
+      ],
+      child: BlocBuilder<LocaleCubit, LocaleState>(
+        builder: (context, state) {
+          return MaterialApp(
+            theme: ThemeData(
+              primaryColor: AppColors.primaryColor,
+              fontFamily: 'Cairo',
+            ),
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
+            locale: state.locale,
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: routerGenerator,
+            initialRoute: SplashView.roteName,
+          );
+        },
       ),
     );
   }

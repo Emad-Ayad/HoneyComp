@@ -71,8 +71,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         globalKey.currentState!.save();
                         context.read<SignInCubit>().signInWithEmailAndPassword(
                             email: email, password: password);
-                        Navigator.pushReplacementNamed(
-                            context, MainView.routeName);
                       } else {
                         setState(() {
                           autoValidateMode = AutovalidateMode.always;
@@ -102,23 +100,20 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   ],
                 ),
                 const SizedBox(height: 33),
-                const OrDivider(
-                  text: "أو",
+                OrDivider(text: S.of(context).orText,
                 ),
                 const SizedBox(height: 33),
                 SocialAuth(
                   onPressed: () {
                     context.read<SignInCubit>().signInWithGoogle();
-                    Navigator.pushReplacementNamed(
-                        context, MainView.routeName);
                   },
-                  title: "تسجيل بواسطة جوجل",
+                  title: S.of(context).signInWithGoogle,
                   icon: Assets.images.google.image(),
                 ),
                 const SizedBox(height: 16),
                 // SocialAuth(
                 //   onPressed: () {},
-                //   title: "تسجيل بواسطة أبل",
+                //   title: S.of(context).signInWithApple,
                 //   icon: Assets.images.apple.image(),
                 // ),
                 // const SizedBox(height: 16),
@@ -126,7 +121,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   onPressed: () {
                     context.read<SignInCubit>().signInWithFacebook();
                   },
-                  title: "تسجيل بواسطة فيسبوك",
+                  title: S.of(context).signInWithFacebook,
                   icon: Assets.images.facebook.image(),
                 ),
               ],

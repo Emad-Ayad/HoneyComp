@@ -92,7 +92,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                                   email: email, password: password, name: name);
                         } else {
                           buildSnackBar(
-                              context, 'الرجاء الموافقة علي الشروط والاحكام');
+                              context, S.of(context).pleaseAgreeToTerms);
                         }
                       } else {
                         setState(() {

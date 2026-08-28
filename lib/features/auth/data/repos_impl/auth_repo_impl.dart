@@ -29,6 +29,7 @@ class AuthRepoImplementation extends AuthRepo {
           email: email, password: password);
       var userEntity = UserEntity(name: name, email: email, id: user.uid);
       await addUserData(userEntity: userEntity);
+      await saveUserData(userEntity: userEntity);
       return Right(userEntity);
     } on CustomException catch (e) {
       await deleteUser(user);
@@ -122,5 +123,11 @@ class AuthRepoImplementation extends AuthRepo {
   Future saveUserData({required UserEntity userEntity}) async {
     var jsonData = jsonEncode(UserModel.fromEntity(userEntity).toMap());
     await SharedPreferenceSingleton.setString(kIUserData, jsonData);
+  }
+
+  @override
+  Future<void> signOut() async {
+    await firebaseAuthService.signOut();
+    SharedPreferenceSingleton.remove(kIUserData);
   }
 }

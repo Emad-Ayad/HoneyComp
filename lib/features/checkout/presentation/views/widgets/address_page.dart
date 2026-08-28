@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +28,7 @@ class AddressPage extends StatelessWidget {
                 onSaved: (value) {
                   orderEntity.shippingAddressEntity!.fullName = value!;
                 },
-                hintText: "الاسم كامل",
+                hintText: S.of(context).fullNameHint,
                 keyboardType: TextInputType.text,
               ),
               const SizedBox(height: 12),
@@ -35,7 +36,7 @@ class AddressPage extends StatelessWidget {
                 onSaved: (value) {
                   orderEntity.shippingAddressEntity!.email = value!;
                 },
-                hintText: "البريد الإلكتروني",
+                hintText: S.of(context).emailHint,
                 keyboardType: TextInputType.text,
               ),
               const SizedBox(height: 12),
@@ -43,7 +44,7 @@ class AddressPage extends StatelessWidget {
                 onSaved: (value) {
                   orderEntity.shippingAddressEntity!.address = value!;
                 },
-                hintText: "العنوان",
+                hintText: S.of(context).address,
                 keyboardType: TextInputType.text,
               ),
               const SizedBox(height: 12),
@@ -51,7 +52,7 @@ class AddressPage extends StatelessWidget {
                 onSaved: (value) {
                   orderEntity.shippingAddressEntity!.city = value!;
                 },
-                hintText: "المدينه",
+                hintText: S.of(context).city,
                 keyboardType: TextInputType.text,
               ),
               const SizedBox(height: 12),
@@ -59,7 +60,7 @@ class AddressPage extends StatelessWidget {
                 onSaved: (value) {
                   orderEntity.shippingAddressEntity!.addressDetails = value!;
                 },
-                hintText: "رقم الطابق , رقم الشقه ..",
+                hintText: S.of(context).floorApartmentNumber,
                 keyboardType: TextInputType.text,
               ),
               const SizedBox(height: 12),
@@ -67,7 +68,7 @@ class AddressPage extends StatelessWidget {
                 onSaved: (value) {
                   orderEntity.shippingAddressEntity!.phone = value!;
                 },
-                hintText: "رقم الهاتف",
+                hintText: S.of(context).phoneNumber,
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(height: 12),

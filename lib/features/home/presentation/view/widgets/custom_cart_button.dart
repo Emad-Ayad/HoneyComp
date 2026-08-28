@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/widgets/build_snack_bar.dart';
@@ -32,7 +33,7 @@ class CustomCartButton extends StatelessWidget {
                         arguments:
                             context.read<CartCubit>().cartEntity);
                   } else {
-                    buildSnackBar(context, "لا توجد منتجات بالسلة");
+                    buildSnackBar(context, S.of(context).noProductsInCart);
                   }
                 },
                 title:

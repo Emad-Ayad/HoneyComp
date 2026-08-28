@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/widgets/build_app_bar.dart';
@@ -31,7 +32,7 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
             child: Column(
               children: [
                 buildAppBar(context,
-                    title: "المنتجات",
+                    title: S.of(context).products,
                     backButtonVisibility: false,
                     notificationVisibility: true),
                 CustomSearchField(),

@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
@@ -9,22 +10,25 @@ class CustomTextFormField extends StatelessWidget {
       required this.keyboardType,
       this.suffixIcon,
       this.onSaved,
-      this.obscureText = false});
+      this.obscureText = false,
+      this.initialValue});
 
   final String hintText;
   final TextInputType keyboardType;
   final Widget? suffixIcon;
   final void Function(String?)? onSaved;
   final bool obscureText;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       obscureText: obscureText,
       onSaved: onSaved,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return "هذا الحقل مطلوب";
+          return S.of(context).thisFieldIsRequired;
         }
         return null;
       },
