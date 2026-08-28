@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
@@ -32,13 +33,13 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'الاسم بالكامل',
+            Text(
+              S.of(context).fullName,
               style: AppTextStyles.subtitle2,
             ),
             const SizedBox(height: 8),
             CustomTextFormField(
-              hintText: 'أدخل اسمك',
+              hintText: S.of(context).enterYourName,
               keyboardType: TextInputType.name,
               initialValue: _name,
               onSaved: (value) {
@@ -53,7 +54,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                   context.read<EditProfileCubit>().updateUserName(newName: _name);
                 }
               },
-              title: 'حفظ التعديلات',
+              title: S.of(context).saveChanges,
             ),
           ],
         ),

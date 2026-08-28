@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
@@ -101,14 +102,14 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                 children: [
                   _buildProfileOption(
                     icon: Icons.shopping_bag_outlined,
-                    title: 'طلباتي',
+                    title: S.of(context).myOrders,
                     onTap: () {
                       Navigator.pushNamed(context, MyOrdersView.routeName);
                     },
                   ),
                   _buildProfileOption(
                     icon: Icons.person_outline,
-                    title: 'تعديل الملف الشخصي',
+                    title: S.of(context).editProfile,
                     onTap: () async {
                       final result = await Navigator.pushNamed(context, EditProfileView.routeName);
                       if (result == true) {
@@ -118,21 +119,21 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ),
                   _buildProfileOption(
                     icon: Icons.location_on_outlined,
-                    title: 'عناويني',
+                    title: S.of(context).myAddresses,
                     onTap: () {
                       // Navigate to Addresses
                     },
                   ),
                   _buildProfileOption(
                     icon: Icons.settings_outlined,
-                    title: 'الإعدادات',
+                    title: S.of(context).settings,
                     onTap: () {
-                      // Navigate to Settings
+                      Navigator.pushNamed(context, 'settings_view');
                     },
                   ),
                   _buildProfileOption(
                     icon: Icons.help_outline,
-                    title: 'تواصل معنا',
+                    title: S.of(context).contactUs,
                     onTap: () {
                       // Navigate to Contact Us
                     },
@@ -143,7 +144,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ),
                   _buildProfileOption(
                     icon: Icons.logout,
-                    title: 'تسجيل الخروج',
+                    title: S.of(context).logout2,
                     isDestructive: true,
                     onTap: () {
                       _showLogoutDialog(context);
@@ -198,18 +199,18 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
       context: context,
       builder: (BuildContext dialogContext) {
         return AlertDialog(
-          title: const Text('تسجيل الخروج', style: AppTextStyles.subtitle1),
-          content: const Text('هل أنت متأكد أنك تريد تسجيل الخروج؟',
+          title: Text(S.of(context).logout2, style: AppTextStyles.subtitle1),
+          content: Text(S.of(context).areYouSureYouWantToLogout,
               style: AppTextStyles.subtitle2),
           actions: [
             TextButton(
-              child: const Text('إلغاء', style: TextStyle(color: Colors.grey)),
+              child: Text(S.of(context).cancel, style: TextStyle(color: Colors.grey)),
               onPressed: () {
                 Navigator.of(dialogContext).pop();
               },
             ),
             TextButton(
-              child: const Text('تسجيل الخروج', style: TextStyle(color: Colors.red)),
+              child: Text(S.of(context).logout2, style: TextStyle(color: Colors.red)),
               onPressed: () {
                 Navigator.of(dialogContext).pop();
                 context.read<SignOutCubit>().signOut();

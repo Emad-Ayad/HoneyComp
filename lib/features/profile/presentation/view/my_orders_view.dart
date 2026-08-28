@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/services/get_it_service.dart';
@@ -21,8 +22,7 @@ class MyOrdersView extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           iconTheme: const IconThemeData(color: Colors.black),
-          title: const Text(
-            'طلباتي',
+          title: Text(S.of(context).myOrders,
             style: AppTextStyles.subtitle1,
           ),
           centerTitle: true,

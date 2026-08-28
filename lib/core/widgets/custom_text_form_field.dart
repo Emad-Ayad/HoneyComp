@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
@@ -27,7 +28,7 @@ class CustomTextFormField extends StatelessWidget {
       onSaved: onSaved,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return "هذا الحقل مطلوب";
+          return S.of(context).thisFieldIsRequired;
         }
         return null;
       },

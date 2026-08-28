@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/widgets/build_snack_bar.dart';
@@ -21,10 +22,10 @@ class MainViewBody extends StatelessWidget {
     return BlocListener<CartCubit, CartState>(
       listener: (context, state) {
         if (state is CartItemAdded) {
-          buildSnackBar(context, "تمت اضافة المنتج الي السلة بنجاح");
+          buildSnackBar(context, S.of(context).productAddedToCart);
         }
         if (state is CartItemRemoved) {
-          buildSnackBar(context, "تم حذف المنتج من السلة بنجاح");
+          buildSnackBar(context, S.of(context).productRemovedFromCart);
         }
       },
       child: SafeArea(

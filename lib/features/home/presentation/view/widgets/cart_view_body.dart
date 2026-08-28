@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/widgets/custom_button.dart';
@@ -22,7 +23,7 @@ class CartViewBody extends StatelessWidget {
             child: Column(
               children: [
                 buildAppBar(context,
-                    title: "السلة", backButtonVisibility: false),
+                    title: S.of(context).cart, backButtonVisibility: false),
                 const SizedBox(height: 8),
                 const CartViewHeader(),
                 const SizedBox(height: 8),

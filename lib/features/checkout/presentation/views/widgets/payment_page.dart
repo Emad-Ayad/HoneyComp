@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:honey_comp/features/checkout/presentation/views/widgets/payment_item.dart';
 
@@ -16,13 +17,13 @@ class PaymentPage extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 32),
-          const PaymentItem(
-            title: "ملخص الطلب:",
-            child: OrderSummaryWidget(),
+          PaymentItem(
+            title: S.of(context).orderSummary,
+            child: const OrderSummaryWidget(),
           ),
           const SizedBox(height: 16),
           PaymentItem(
-            title: 'يرجي تأكيد  طلبك',
+            title: S.of(context).pleaseConfirmYourOrder,
             child: AddressWidget(pageController: pageController,),
           )
         ],

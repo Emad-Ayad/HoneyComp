@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
 import 'package:honey_comp/core/widgets/notification_widget.dart';
@@ -7,7 +8,7 @@ AppBar buildBestSellingAppBar(BuildContext context) {
     backgroundColor: Colors.white,
     centerTitle: true,
     title: Text(
-      'الاكثر مبيعاً',
+      S.of(context).bestSelling2,
       style: AppTextStyles.heading3.copyWith(fontSize: 19),
     ),
     leading: IconButton(

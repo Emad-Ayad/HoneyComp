@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
@@ -23,9 +24,9 @@ class MyOrdersViewBody extends StatelessWidget {
           );
         } else if (state is MyOrdersSuccess) {
           if (state.orders.isEmpty) {
-            return const Center(
+            return Center(
               child: Text(
-                'لا توجد طلبات سابقة',
+                S.of(context).noPreviousOrders,
                 style: AppTextStyles.subtitle1,
               ),
             );

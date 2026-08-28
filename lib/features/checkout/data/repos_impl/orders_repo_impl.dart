@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';

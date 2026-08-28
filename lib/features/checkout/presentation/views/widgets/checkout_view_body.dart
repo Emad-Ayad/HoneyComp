@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/widgets/build_app_bar.dart';
@@ -53,7 +54,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     return BlocConsumer<OrdersCubit, OrdersState>(
       listener: (context, state) async {
         if (state is OrdersSuccess) {
-          buildSnackBar(context, 'تم تأكيد طلبك بنجاح');
+          buildSnackBar(context, S.of(context).orderConfirmedSuccessfully);
           context.read<CartCubit>().clearCart();
           Navigator.pushNamedAndRemoveUntil(
               context, MainView.routeName, (route) => false);
@@ -75,7 +76,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           } else {
             // Payment failed or cancelled
             if (!mounted) return;
-            buildSnackBar(context, 'تم إلغاء أو فشل عملية الدفع الإلكتروني.');
+            buildSnackBar(context, S.of(context).electronicPaymentFailed);
           }
         }
       },
@@ -86,7 +87,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               children: [
-                buildAppBar(context, title: "الشحن"),
+                buildAppBar(context, title: S.of(context).shipping),
                 const SizedBox(height: 20),
                 CheckoutSteps(
                   pageController: pageController,
@@ -107,7 +108,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                         context.read<OrdersCubit>().processCheckout(orderEntity);
                       }
                     },
-                    title: currentPageIndex == 2 ? 'تأكيد الطلب' : 'التالي'),
+                    title: currentPageIndex == 2 ? S.of(context).confirmOrder : 'التالي'),
                 const SizedBox(height: 32)
               ],
             ),
@@ -123,7 +124,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       pageController.nextPage(
           duration: const Duration(milliseconds: 300), curve: Curves.bounceIn);
     } else {
-      buildSnackBar(context, "برجاء اختيار طريقة الدفع");
+      buildSnackBar(context, S.of(context).pleaseChoosePaymentMethod);
     }
   }
 

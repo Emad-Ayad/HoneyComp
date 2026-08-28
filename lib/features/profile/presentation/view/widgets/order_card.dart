@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
@@ -19,7 +20,7 @@ class OrderCard extends StatelessWidget {
       formattedDate = order.date;
     }
 
-    String mappedStatus = _mapStatus(order.status);
+    String mappedStatus = _mapStatus(context, order.status);
     Color statusColor = _getStatusColor(order.status);
 
     return Container(
@@ -88,16 +89,16 @@ class OrderCard extends StatelessWidget {
     );
   }
 
-  String _mapStatus(String status) {
+  String _mapStatus(BuildContext context, String status) {
     switch (status.toLowerCase()) {
       case 'pending':
-        return 'قيد المراجعة';
+        return S.of(context).underReview;
       case 'shipped':
-        return 'تم الشحن';
+        return S.of(context).shipped;
       case 'delivered':
-        return 'تم التوصيل';
+        return S.of(context).delivered;
       case 'cancelled':
-        return 'ملغي';
+        return S.of(context).canceled;
       default:
         return status;
     }

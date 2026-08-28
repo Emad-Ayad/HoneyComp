@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
@@ -23,8 +24,7 @@ class EditProfileView extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           iconTheme: const IconThemeData(color: Colors.black),
-          title: const Text(
-            'تعديل الملف الشخصي',
+          title: Text(S.of(context).editProfile,
             style: AppTextStyles.subtitle1,
           ),
           centerTitle: true,
@@ -34,7 +34,7 @@ class EditProfileView extends StatelessWidget {
             if (state is EditProfileFailure) {
               buildSnackBar(context, state.errMessage);
             } else if (state is EditProfileSuccess) {
-              buildSnackBar(context, 'تم حفظ التعديلات بنجاح');
+              buildSnackBar(context, S.of(context).changesSavedSuccessfully);
               Navigator.pop(context, true); // Return true so Profile screen can refresh
             }
           },

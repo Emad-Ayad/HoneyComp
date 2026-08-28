@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/features/checkout/domain/entities/orders_entity.dart';
@@ -15,8 +16,7 @@ class OrderSummaryWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Text(
-              "المجموع الفرعي :",
+            Text(S.of(context).subtotal,
               style: AppTextStyles.bodyText2,
             ),
             const Spacer(),
@@ -30,8 +30,7 @@ class OrderSummaryWidget extends StatelessWidget {
         const SizedBox(height: 9),
         Row(
           children: [
-            const Text(
-              "التوصيل  :",
+            Text(S.of(context).delivery,
               style: AppTextStyles.bodyText2,
             ),
             const Spacer(),
@@ -51,7 +50,7 @@ class OrderSummaryWidget extends StatelessWidget {
         Row(
           children: [
             Text(
-              "الكلي",
+              S.of(context).total,
               style:
                   AppTextStyles.bodyText1.copyWith(fontWeight: FontWeight.bold),
             ),

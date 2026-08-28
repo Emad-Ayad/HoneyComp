@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/features/checkout/domain/entities/orders_entity.dart';
@@ -23,8 +24,8 @@ class _ShippingPageState extends State<ShippingPage>
       children: [
         const SizedBox(height: 32),
         ShippingItem(
-          title: "الدفع عند الاستلام",
-          subtitle: 'التسليم في المكان',
+          title: S.of(context).cashOnDelivery,
+          subtitle: S.of(context).deliveryOnSpot,
           price: (orderEntity.cartEntity.getTotalPrice() + 40).toString(),
           onPressed: () {
             selectedIndex = 0;
@@ -35,8 +36,8 @@ class _ShippingPageState extends State<ShippingPage>
         ),
         const SizedBox(height: 16),
         ShippingItem(
-          title: "الدفع اونلاين",
-          subtitle: 'التسليم في المكان',
+          title: S.of(context).onlinePayment,
+          subtitle: S.of(context).deliveryOnSpot,
           price: context
               .read<OrdersEntity>()
               .cartEntity

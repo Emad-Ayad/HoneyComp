@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:dartz/dartz.dart';
 import 'package:honey_comp/core/errors/failure.dart';
 import 'package:honey_comp/core/helper_functions/backend_endpoints.dart';

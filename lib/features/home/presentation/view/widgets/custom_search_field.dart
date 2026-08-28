@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
@@ -20,7 +21,7 @@ class CustomSearchField extends StatelessWidget {
         decoration: InputDecoration(
             suffixIcon: const Icon(Icons.filter_list),
             prefixIcon: const Icon(Icons.search),
-            hintText: "أبحث عن....",
+            hintText: S.of(context).searchFor,
             hintStyle: AppTextStyles.bodyText2.copyWith(
               color: AppColors.gray,
             ),

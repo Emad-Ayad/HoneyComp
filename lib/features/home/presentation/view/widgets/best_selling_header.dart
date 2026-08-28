@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
 import 'package:honey_comp/features/best_selling/presentation/view/best_selling_view.dart';
@@ -13,15 +14,14 @@ class BestSellingHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "الأكثر مبيعاً",
+            S.of(context).bestSelling,
             style:
                 AppTextStyles.subtitle1.copyWith(fontWeight: FontWeight.bold),
           ),
           GestureDetector(
             onTap: () =>
                 Navigator.pushNamed(context, BestSellingView.routeName),
-            child: const Text(
-              "المزيد",
+            child: Text(S.of(context).more,
               style: AppTextStyles.bodyText1,
             ),
           ),

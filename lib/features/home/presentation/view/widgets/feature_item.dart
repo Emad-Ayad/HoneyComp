@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
 import 'package:honey_comp/gen/assets.gen.dart';
@@ -30,8 +31,9 @@ class FeatureItem extends StatelessWidget {
         ]),
         child: Stack(
           children: [
-            Positioned(
-              right: width * 0.4,
+            Positioned.directional(
+              textDirection: Directionality.of(context),
+              start: width * 0.4,
               child: Image.asset(
                 Assets.images.honeyStick.path,
                 height: height * 0.2,
@@ -39,16 +41,17 @@ class FeatureItem extends StatelessWidget {
             ),
 
             ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(12),
-                bottomRight: Radius.circular(12),
-              ),
+              borderRadius: const BorderRadiusDirectional.only(
+                topStart: Radius.circular(12),
+                bottomStart: Radius.circular(12),
+              ).resolve(Directionality.of(context)),
               child: Container(
                 width: width * 0.46,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: svg.Svg(Assets.images.ellipse),
                     fit: BoxFit.fill,
+                    matchTextDirection: true,
                   ),
                 ),
                 child: Padding(
@@ -60,14 +63,14 @@ class FeatureItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "عروض رمضان",
+                        S.of(context).ramadanOffers,
                         style: AppTextStyles.bodyText1.copyWith(
                           color: Colors.white,
                         ),
                       ),
                       const Spacer(),
                       Text(
-                        "خصم 30%",
+                        S.of(context).discount30,
                         style: AppTextStyles.heading3.copyWith(
                           color: Colors.white,
                         ),
@@ -75,7 +78,7 @@ class FeatureItem extends StatelessWidget {
                       const SizedBox(height: 8),
                       CustomFeaturesButton(
                         onPressed: () {},
-                        title: "تسوق الان",
+                        title: S.of(context).shopNow,
                       ),
                       const SizedBox(height: 8),
                     ],

@@ -10,6 +10,7 @@ import '../../features/checkout/presentation/views/checkout_view.dart';
 import '../../features/home/domain/entities/cart_entity.dart';
 import 'package:honey_comp/features/profile/presentation/view/my_orders_view.dart';
 import 'package:honey_comp/features/profile/presentation/view/edit_profile_view.dart';
+import 'package:honey_comp/features/profile/presentation/view/settings_view.dart';
 
 Route<dynamic> routerGenerator(RouteSettings settings) {
   switch (settings.name) {
@@ -41,6 +42,9 @@ Route<dynamic> routerGenerator(RouteSettings settings) {
 
     case EditProfileView.routeName:
       return MaterialPageRoute(builder: (context) => const EditProfileView());
+
+    case SettingsView.routeName:
+      return MaterialPageRoute(builder: (context) => const SettingsView());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

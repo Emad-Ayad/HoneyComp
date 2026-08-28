@@ -1,3 +1,4 @@
+import 'package:honey_comp/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/features/checkout/domain/entities/orders_entity.dart';
@@ -20,7 +21,7 @@ class AddressWidget extends StatelessWidget {
         Row(
           children: [
             Text(
-              "عنوان التوصيل",
+              S.of(context).deliveryAddress,
               style:
                   AppTextStyles.bodyText2.copyWith(fontWeight: FontWeight.bold),
             ),
