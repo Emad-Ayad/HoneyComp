@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
 import 'package:honey_comp/core/constants/app_text_styles.dart';
-import 'package:honey_comp/core/constants/constants.dart';
 import 'package:honey_comp/core/helper_functions/get_user_data.dart';
-import 'package:honey_comp/core/services/firebase_auth_service.dart';
-import 'package:honey_comp/core/services/get_it_service.dart';
-import 'package:honey_comp/core/services/shared_preferences_singleton.dart';
 import 'package:honey_comp/features/auth/domain/entities/user_entity.dart';
 import 'package:honey_comp/features/auth/presentaion/view/login_view.dart';
 import 'package:honey_comp/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:honey_comp/features/profile/presentation/view/edit_profile_view.dart';
 import 'package:honey_comp/features/profile/presentation/view/my_orders_view.dart';
+import 'package:honey_comp/features/auth/presentaion/cubits/sign_out_cubit/sign_out_cubit.dart';
+import 'package:honey_comp/core/widgets/build_snack_bar.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class ProfileViewBody extends StatefulWidget {
   const ProfileViewBody({super.key});
@@ -22,6 +21,7 @@ class ProfileViewBody extends StatefulWidget {
 
 class _ProfileViewBodyState extends State<ProfileViewBody> {
   late UserEntity user;
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -37,9 +37,31 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
+    return BlocConsumer<SignOutCubit, SignOutState>(
+      listener: (context, state) {
+        if (state is SignOutLoading) {
+          setState(() {
+            _isLoading = true;
+          });
+        } else {
+          setState(() {
+            _isLoading = false;
+          });
+          if (state is SignOutSuccess) {
+            context.read<CartCubit>().clearCart();
+            Navigator.pushNamedAndRemoveUntil(
+                context, LoginView.routeName, (route) => false);
+          } else if (state is SignOutFailure) {
+            buildSnackBar(context, state.errMessage);
+          }
+        }
+      },
+      builder: (context, state) {
+        return ModalProgressHUD(
+          inAsyncCall: _isLoading,
+          child: SafeArea(
+            child: Column(
+              children: [
           // Header Section
           Container(
             width: double.infinity,
@@ -133,6 +155,9 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
           ),
         ],
       ),
+    ),
+        );
+      },
     );
   }
 
@@ -185,15 +210,9 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
             ),
             TextButton(
               child: const Text('تسجيل الخروج', style: TextStyle(color: Colors.red)),
-              onPressed: () async {
+              onPressed: () {
                 Navigator.of(dialogContext).pop();
-                await getIt.get<FirebaseAuthService>().signOut();
-                SharedPreferenceSingleton.remove(kIUserData);
-                if (context.mounted) {
-                  context.read<CartCubit>().clearCart();
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, LoginView.routeName, (route) => false);
-                }
+                context.read<SignOutCubit>().signOut();
               },
             ),
           ],

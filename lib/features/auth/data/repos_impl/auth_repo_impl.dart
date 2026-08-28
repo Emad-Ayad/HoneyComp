@@ -124,4 +124,10 @@ class AuthRepoImplementation extends AuthRepo {
     var jsonData = jsonEncode(UserModel.fromEntity(userEntity).toMap());
     await SharedPreferenceSingleton.setString(kIUserData, jsonData);
   }
+
+  @override
+  Future<void> signOut() async {
+    await firebaseAuthService.signOut();
+    SharedPreferenceSingleton.remove(kIUserData);
+  }
 }
