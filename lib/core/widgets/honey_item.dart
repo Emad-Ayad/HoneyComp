@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:honey_comp/core/constants/app_colors.dart';
@@ -32,11 +33,17 @@ class HoneyItem extends StatelessWidget {
               ClipRRect(
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(12)),
-                child: Image.network(
-                  productEntity.imageUrl!,
+                child: CachedNetworkImage(
+                  imageUrl: productEntity.imageUrl!,
                   width: double.infinity,
                   height: 150,
                   fit: BoxFit.contain,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  errorWidget: (context, url, error) => const Center(
+                    child: Icon(Icons.image_not_supported, size: 50, color: Colors.grey),
+                  ),
                 ),
               ),
               Padding(
@@ -45,24 +52,28 @@ class HoneyItem extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          productEntity.name,
-                          style: AppTextStyles.bodyText1.copyWith(
-                            fontWeight: FontWeight.bold,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            productEntity.name,
+                            style: AppTextStyles.bodyText1.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.start,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          textAlign: TextAlign.start,
-                        ),
-                        const SizedBox(height: 6),
-                        Text(
-                          "${productEntity.price} جنيه / \n الكيلو",
-                          style: AppTextStyles.subtitle2.copyWith(
-                              color: AppColors.secondaryColor, fontSize: 16),
-                          textAlign: TextAlign.start,
-                        ),
-                      ],
+                          const SizedBox(height: 6),
+                          Text(
+                            "${productEntity.price} جنيه / \n الكيلو",
+                            style: AppTextStyles.subtitle2.copyWith(
+                                color: AppColors.secondaryColor, fontSize: 16),
+                            textAlign: TextAlign.start,
+                          ),
+                        ],
+                      ),
                     ),
                     CircleAvatar(
                       backgroundColor: AppColors.primaryColor,
